@@ -5,6 +5,7 @@ import random
 import matplotlib.pyplot as plt
 from scipy.stats import norm 
 from datetime import datetime, timedelta
+import os
 
 def validate_and_clamp_ranges(ranges: list, max_possible_value: int):
     """
@@ -277,44 +278,16 @@ def generate_graph_from_distribution(num_nodes: int, seed: int, ranges: list, de
         print(f"Could not generate a graph from the degree sequence. {e}")
         return None
 
-def generate_node_data(graph):
+def select_weight_from_probabilities(weight_probabilities: dict):
     """
-    Generates dummy data for each node in the graph.
-    This function populates the graph with attributes like connections, bans, group IDs, etc.
-    """
-    types = ["All", "Half+", "One+"]
-    
-    # Define ban ranges using list of dictionaries (probabilities don't need to sum up to 1)
-    ban_ranges = [
-        {'start': 0, 'end': 0, 'prob': 0.4},    # 40% get exactly 0 bans
-        {'start': 1, 'end': 2, 'prob': 0.3},    # 30% get 1-2 bans
-        {'start': 3, 'end': 10, 'prob': 0.1}    # 10% get 3-10 bans
-        # Remaining 20% will be evenly distributed among uncovered values
-    ]
-    
-    for node in graph.nodes():
-        waiting_since = datetime.now() - timedelta(days=random.randint(0, 30), hours=random.randint(0, 23), minutes=random.randint(0, 59))
-        available = random.choice([True, False])
-        group_ids = random.sample(range(1, 10), random.randint(0, 5))  # Up to 5 arbitrary group IDs
-        bans = generate_random_bans(graph, node, ban_ranges)
-
-        graph.nodes[node]["data"] = {
-            "bans": bans,
-            "groupIDs": group_ids,
-            "waiting_since": waiting_since,
-            "type": random.choice(types),
-            "available": available
-        }
-
-def generate_edge_data(graph, weight_probabilities: dict):
-    """
-    Generates weight data for each edge in the graph.
-    Each edge gets a dictionary with node IDs as keys and their assigned weights as values.
+    Selects a weight based on probability distribution.
     
     Args:
-        graph: The NetworkX graph object to add edge data to
-        weight_probabilities (dict): A dictionary where keys are weights (1-3) and values are probabilities
+        weight_probabilities (dict): A dictionary where keys are weights and values are probabilities
                                    E.g., {1: 0.4, 2: 0.35, 3: 0.25}
+    
+    Returns:
+        int: Selected weight based on the probability distribution
     """
     # Validate weight probabilities
     valid_weights = [1, 2, 3]
@@ -338,21 +311,60 @@ def generate_edge_data(graph, weight_probabilities: dict):
         cumsum += prob
         cumulative_probs.append(cumsum)
     
-    def select_weight():
-        """Helper function to select a weight based on probabilities"""
-        rand_val = random.random()
-        for i, cum_prob in enumerate(cumulative_probs):
-            if rand_val <= cum_prob:
-                return weights[i]
-        return weights[-1]  # Fallback to last weight
+    # Select weight based on probabilities
+    rand_val = random.random()
+    for i, cum_prob in enumerate(cumulative_probs):
+        if rand_val <= cum_prob:
+            return weights[i]
+    return weights[-1]  # Fallback to last weight
+
+def generate_node_data(graph):
+    """
+    Generates dummy data for each node in the graph.
+    This function populates the graph with attributes like connections, bans, group IDs, etc.
+    """
+    types = ["All", "Half+", "One+"]
     
+    # Define ban ranges using list of dictionaries (probabilities don't need to sum up to 1)
+    ban_ranges = [
+        {'start': 0, 'end': 0, 'prob': 0.4},    # 40% get exactly 0 bans
+        {'start': 1, 'end': 2, 'prob': 0.3},    # 30% get 1-2 bans
+        {'start': 3, 'end': 10, 'prob': 0.1}    # 10% get 3-10 bans
+        # Remaining 20% will be evenly distributed among uncovered values
+    ]
+
+    # Affinity is the same as weight. (preferably sum up probabilities to 1)
+    min_affinity_constraint_probabilities = select_weight_from_probabilities({
+            1: 0,
+            2: 1,
+            3: 0
+        })
+    
+    for node in graph.nodes():
+        graph.nodes[node]["waiting_since"] = datetime.now() - timedelta(days=random.randint(0, 30), hours=random.randint(0, 23), minutes=random.randint(0, 59))
+        graph.nodes[node]["available"] = random.choice([True, False])
+        graph.nodes[node]["mac"] = min_affinity_constraint_probabilities
+        graph.nodes[node]["groupIDs"] = random.sample(range(1, 10), random.randint(0, 5))  # Up to 5 arbitrary group IDs
+        graph.nodes[node]["bans"] = generate_random_bans(graph, node, ban_ranges)
+        graph.nodes[node]["type"] = random.choice(types)
+
+def generate_edge_data(graph, weight_probabilities: dict):
+    """
+    Generates weight data for each edge in the graph.
+    Each edge gets a dictionary with node IDs as keys and their assigned weights as values.
+    
+    Args:
+        graph: The NetworkX graph object to add edge data to
+        weight_probabilities (dict): A dictionary where keys are weights (1-3) and values are probabilities
+                                   E.g., {1: 0.4, 2: 0.35, 3: 0.25}
+    """
     # Generate edge data for each edge
     for edge in graph.edges():
         u, v = edge
         
-        # Assign weights to both nodes of the edge
-        w1 = select_weight()
-        w2 = select_weight()
+        # Assign weights to both nodes of the edge using the reusable function
+        w1 = select_weight_from_probabilities(weight_probabilities)
+        w2 = select_weight_from_probabilities(weight_probabilities)
         
         # Create edge data dictionary
         edge_data = {
@@ -392,7 +404,7 @@ def display_ban_stats(my_graph):
     print("\n--- Ban Distribution Stats ---")
     
     # Get the number of bans for all nodes
-    ban_counts = [len(my_graph.nodes[node]["data"]["bans"]) for node in my_graph.nodes()]
+    ban_counts = [len(my_graph.nodes[node]["bans"]) for node in my_graph.nodes()]
     
     # Calculate mean number of bans
     mean_bans = sum(ban_counts) / len(ban_counts)
@@ -468,7 +480,7 @@ def display_edge_weight_stats(my_graph):
             percentage = (count / len(edge_weight_sums)) * 100
             print(f"  - Total {total}: {count} edges ({percentage:.1f}%)")
 
-def plot_degree_distribution():
+def plot_degree_distribution(my_graph):
     # Get the degrees of all nodes
     degrees = [d for n, d in my_graph.degree()]
 
@@ -504,9 +516,9 @@ def plot_degree_distribution():
     plt.savefig("outputs/degree_distribution.png")
     plt.close()
 
-def plot_ban_distribution():
+def plot_ban_distribution(my_graph):
     # Get the number of bans for all nodes
-    ban_counts = [len(my_graph.nodes[node]["data"]["bans"]) for node in my_graph.nodes()]
+    ban_counts = [len(my_graph.nodes[node]["bans"]) for node in my_graph.nodes()]
 
     # Create a histogram of the ban distribution
     plt.figure(figsize=(10, 6))
@@ -541,7 +553,7 @@ def plot_ban_distribution():
     plt.close()
 
 # Visualize the graph
-def visualize_graph():
+def visualize_graph(my_graph):
     plt.figure(figsize=(12, 8))
     
     # Create a temporary graph without edge attributes for layout calculation
@@ -582,43 +594,64 @@ def visualize_graph():
     plt.savefig("outputs/graph_visualization.png", dpi=300, bbox_inches='tight')
     plt.close()
 
+
 # --- Example Usage ---
 
-# Define the graph parameters
-GRAPH_SIZE = 50
-RANDOM_SEED = 42
-DEFAULT_STDEV = 10
-DEGREE_RANGES = [
-    {'start': 0, 'end': 1, 'prob': 0.25},
-    {'start': GRAPH_SIZE - 2, 'end': GRAPH_SIZE - 1, 'prob': 0.1},
-    # The remaining % of nodes will be assigned a degree from the normal distribution
-]
-EDGE_WEIGHT_PROBABILITIES = {
-    1: 0.4,   # 40% chance for weight 1
-    2: 0.35,  # 35% chance for weight 2
-    3: 0.25   # 25% chance for weight 3
-}
+def generate_graph():
+    """
+    Generates a graph with a specified size, random seed, degree ranges, and edge weight probabilities.
+    Returns:
+        A networkx.Graph object if the graph is generated successfully, otherwise None.
+    """
+    # Define parameters for the graph generation
+    GRAPH_SIZE = 50
+    RANDOM_SEED = 42
+    DEFAULT_STDEV = 10
+    DEGREE_RANGES = [
+        {'start': 0, 'end': 1, 'prob': 0.25},
+        {'start': GRAPH_SIZE - 2, 'end': GRAPH_SIZE - 1, 'prob': 0.1},
+        # The remaining % of nodes will be assigned a degree from the normal distribution
+    ]
+    # Edge weight probabilities try to make them sum up to 1 (not mandatory but preferred)
+    # Edge weight : probability mapping
+    EDGE_WEIGHT_PROBABILITIES = {
+        1: 0.4, 
+        2: 0.35, 
+        3: 0.25   
+    }
 
-# Generate the graph
-print("--- Generating Graph ---")
+    # Generate the graph
+    print("--- Generating Graph ---")
 
-my_graph = generate_graph_from_distribution(
-    num_nodes=GRAPH_SIZE,
-    seed=RANDOM_SEED,
-    ranges=DEGREE_RANGES,
-    default_std_dev=DEFAULT_STDEV
-)
+    my_graph = generate_graph_from_distribution(
+        num_nodes=GRAPH_SIZE,
+        seed=RANDOM_SEED,
+        ranges=DEGREE_RANGES,
+        default_std_dev=DEFAULT_STDEV
+    )
 
-if my_graph:
-    print("Graph generated successfully.")
     generate_node_data(my_graph)
     generate_edge_data(my_graph, EDGE_WEIGHT_PROBABILITIES)
+
+    print("Graph generated successfully.")
+    return my_graph
+
+def generate_graph_statistics(my_graph):
+    if not os.path.exists("outputs"):
+        os.makedirs("outputs")
+
     display_graph_stats(my_graph)
     display_degree_stats(my_graph)
     display_ban_stats(my_graph)
     display_edge_weight_stats(my_graph)
-    plot_degree_distribution()
-    plot_ban_distribution()
-    visualize_graph()
-else:
-    print("Graph generation failed.")
+    plot_degree_distribution(my_graph)
+    plot_ban_distribution(my_graph)
+    visualize_graph(my_graph)
+
+if __name__ == "__main__":
+    my_graph = generate_graph()
+
+    if my_graph:
+        generate_graph_statistics(my_graph)
+    else:
+        print("Graph generation failed.")
