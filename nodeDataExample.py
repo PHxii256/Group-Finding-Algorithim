@@ -1,6 +1,6 @@
 from datetime import datetime
 
-# --- NODE DATA EXAMPLE ---
+# --- NODE DATA EXAMPLE (Outdated) ---
 
 # This example provides a template for node data in a graph.
 # The node data structure follows following format, node id : node data
