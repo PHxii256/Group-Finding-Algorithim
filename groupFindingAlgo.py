@@ -21,12 +21,12 @@ def remove_unavailable_nodes(my_graph):
         my_graph.remove_node(node)
 
 def total_edge_weight(node_id, frontier_id):
-    return sum(my_graph.get_edge_data(frontier_id, node_id))['weight'].values()
+    return sum(my_graph.get_edge_data(frontier_id, node_id)['weight'].values())
 
 def get_path_bans(path):
     bans_set = set()
-    for node in path:
-        bans_set.update(my_graph.nodes[node['id']]['bans'])
+    for node_id in path:
+        bans_set.update(my_graph.nodes[node_id]['bans'])
     return bans_set
 
 def get_type_connection_count(node_type):
@@ -42,8 +42,7 @@ def get_type_connection_count(node_type):
     return type_connection_count
 
 def get_node_conn_count_with_path(node_id, path):
-    path_node_ids = [node['id'] for node in path]
-    conn_count_with_path = len(set(my_graph.neighbors(node_id)) & set(path_node_ids))
+    conn_count_with_path = len(set(my_graph.neighbors(node_id)) & set(path))
     return conn_count_with_path
 
 def is_path_feasible(path):
@@ -57,7 +56,7 @@ def is_path_feasible(path):
     return True
 
 def get_node_remaining_conn_count(node_id, path):
-    type_connection_count = get_type_connection_count(my_graph.nodes[node_id]['data']['type'])
+    type_connection_count = get_type_connection_count(my_graph.nodes[node_id]['type'])
     connection_count_with_path = get_node_conn_count_with_path(node_id, path)
     remaining_connections =  max(type_connection_count - connection_count_with_path, 0)
     return remaining_connections
@@ -93,29 +92,41 @@ def get_mandatory_nodes_picks(path):
             raise ValueError(f"ERROR: Node {node}'s remaining connections > group_size - len(path).")
 
     for node_id in m_nodes_list:
-        m_nodes_picks.update(my_graph.neighbors(node_id) - path_bans)
+        node_neighbors = set(my_graph.neighbors(node_id))
+        m_nodes_picks.update(node_neighbors)
 
-    return m_nodes_picks - path_bans
+    return m_nodes_picks - path_bans - set(path)
 
 def get_frontier_picks(path, excluded_nodes = set()):
     frontier_picks = set()
+    path_bans = get_path_bans(path)
+    
     for node_id in path:
-        frontier_picks = set(my_graph.neighbors(node_id)) & get_mandatory_nodes_picks(path)
-        frontier_picks -= get_path_bans(path) - excluded_nodes
+        node_neighbors = set(my_graph.neighbors(node_id))
+        frontier_picks.update(node_neighbors)
+    
+    # Remove path bans and excluded nodes
+    frontier_picks -= path_bans
+    frontier_picks -= set(excluded_nodes)
+    frontier_picks -= set(path)  # Remove nodes already in path
+    
     return frontier_picks
 
 def pass_mac(frontier_id, pick_id):
     edge_data = my_graph.get_edge_data(frontier_id, pick_id)
-    if edge_data['weight'][pick_id] >= my_graph.nodes[frontier_id]['data']['mac']:
+    if edge_data is None:
+        # print(f"Edge data for {frontier_id} to {pick_id} is None, skipping MAC check.")
+        return False
+    if edge_data['weight'][pick_id] >= my_graph.nodes[frontier_id]['mac']:
         return True
     else:  
         return False
 
 def frontier_pass_mac_with_path(frontier_id, path):
-    for node in path:
-        if my_graph.has_edge(frontier_id, node['id']):
-            edge_data = my_graph.get_edge_data(frontier_id, node['id'])
-            if edge_data['weight'][node['id']] >= my_graph.nodes[frontier_id]['data']['mac']:
+    for node_id in path:
+        if my_graph.has_edge(frontier_id, node_id):
+            edge_data = my_graph.get_edge_data(frontier_id, node_id)
+            if edge_data['weight'][node_id] >= my_graph.nodes[frontier_id]['mac']:
                 return True
 
 def get_valid_sorted_mac_pics(frontier_id, path):

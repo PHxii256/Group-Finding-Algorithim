@@ -1,1 +1,1 @@
-    global current_frontier
+get_path_bans
