@@ -318,11 +318,19 @@ def select_weight_from_probabilities(weight_probabilities: dict):
             return weights[i]
     return weights[-1]  # Fallback to last weight
 
-def generate_node_data(graph):
+def is_node_available(availability_prob=0.8):
+    return random.random() < availability_prob
+
+def generate_node_data(graph, seed=42):
     """
     Generates dummy data for each node in the graph.
     This function populates the graph with attributes like connections, bans, group IDs, etc.
+    
+    Args:
+        graph: The NetworkX graph object to add node data to
+        seed: Random seed for reproducible results (optional)
     """
+    random.seed(seed)
     types = ["All", "Half+", "One+"]
     
     # Define ban ranges using list of dictionaries (probabilities don't need to sum up to 1)
@@ -342,7 +350,7 @@ def generate_node_data(graph):
     
     for node in graph.nodes():
         graph.nodes[node]["waiting_since"] = datetime.now() - timedelta(days=random.randint(0, 30), hours=random.randint(0, 23), minutes=random.randint(0, 59))
-        graph.nodes[node]["available"] = random.choice([True, False])
+        graph.nodes[node]["available"] = is_node_available(availability_prob=0.8)  
         graph.nodes[node]["mac"] = min_affinity_constraint_probabilities
         graph.nodes[node]["groupIDs"] = random.sample(range(1, 10), random.randint(0, 5))  # Up to 5 arbitrary group IDs
         graph.nodes[node]["bans"] = generate_random_bans(graph, node, ban_ranges)
@@ -630,7 +638,7 @@ def generate_graph():
         default_std_dev=DEFAULT_STDEV
     )
 
-    generate_node_data(my_graph)
+    generate_node_data(my_graph, seed=RANDOM_SEED)
     generate_edge_data(my_graph, EDGE_WEIGHT_PROBABILITIES)
 
     print("Graph generated successfully.")

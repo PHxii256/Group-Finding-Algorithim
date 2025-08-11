@@ -1,1 +1,1 @@
-get_path_bans
+['mac']
