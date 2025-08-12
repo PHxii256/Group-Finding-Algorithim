@@ -1,0 +1,1221 @@
+🔎 Starting group finding algorithm (Seed: 42)
+• Removed 7 unavailable nodes out of 50.
+=== Starting DFS with seed node: 4 ===
+--- Loop 1 ---
+POPPED: node=4, path=[], remaining_picks=[]
+Exploring node 4, new path: [4]
+Node 4 of type Half+ that needs 2 has 2 r_conns with path: [4].
+Valid MAC picks for 4: []
+No valid MAC picks for 4, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 4
+=== Starting DFS with seed node: 26 ===
+--- Loop 1 ---
+POPPED: node=26, path=[], remaining_picks=[]
+Exploring node 26, new path: [26]
+Node 26 of type One+ that needs 1 has 1 r_conns with path: [26].
+Valid MAC picks for 26: []
+No valid MAC picks for 26, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 26
+=== Starting DFS with seed node: 15 ===
+--- Loop 1 ---
+POPPED: node=15, path=[], remaining_picks=[]
+Exploring node 15, new path: [15]
+Node 15 of type Half+ that needs 2 has 2 r_conns with path: [15].
+Valid MAC picks for 15: []
+No valid MAC picks for 15, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 15
+=== Starting DFS with seed node: 9 ===
+--- Loop 1 ---
+POPPED: node=9, path=[], remaining_picks=[]
+Exploring node 9, new path: [9]
+Node 9 of type All that needs 3 has 3 r_conns with path: [9].
+Valid MAC picks for 9: []
+No valid MAC picks for 9, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 9
+=== Starting DFS with seed node: 38 ===
+--- Loop 1 ---
+POPPED: node=38, path=[], remaining_picks=[]
+Exploring node 38, new path: [38]
+Node 38 of type All that needs 3 has 3 r_conns with path: [38].
+Valid MAC picks for 38: [39, 42, 44, 21, 48, 37, 20, 15]
+Best pick: 39, remaining: [42, 44, 21, 48, 37, 20, 15]
+Added backtrack option: node=38, remaining_picks=[42, 44, 21, 48, 37, 20, 15]
+Exploring best pick: 39 with path: [38]
+Stack state: [(38, [], [42, 44, 21, 48, 37, 20, 15]), (39, [38], [])]
+--- Loop 2 ---
+POPPED: node=39, path=[38], remaining_picks=[]
+Exploring node 39, new path: [38, 39]
+Node 38 of type All that needs 3 has 2 r_conns with path: [38, 39].
+Node 39 of type Half+ that needs 2 has 1 r_conns with path: [38, 39].
+Valid MAC picks for 39: [44, 14, 34, 42, 18]
+Best pick: 44, remaining: [14, 34, 42, 18]
+Added backtrack option: node=39, remaining_picks=[14, 34, 42, 18]
+Exploring best pick: 44 with path: [38, 39]
+Stack state: [(38, [], [42, 44, 21, 48, 37, 20, 15]), (39, [38], [14, 34, 42, 18]), (44, [38, 39], [])]
+--- Loop 3 ---
+POPPED: node=44, path=[38, 39], remaining_picks=[]
+Exploring node 44, new path: [38, 39, 44]
+Node 38 of type All that needs 3 has 1 r_conns with path: [38, 39, 44].
+Node 39 of type Half+ that needs 2 has 0 r_conns with path: [38, 39, 44].
+Node 44 of type One+ that needs 1 has 0 r_conns with path: [38, 39, 44].
+Valid MAC picks for 44: [34, 20]
+Best pick: 34, remaining: [20]
+Added backtrack option: node=44, remaining_picks=[20]
+Exploring best pick: 34 with path: [38, 39, 44]
+Stack state: [(38, [], [42, 44, 21, 48, 37, 20, 15]), (39, [38], [14, 34, 42, 18]), (44, [38, 39], [20]), (34, [38, 39, 44], [])]
+--- Loop 4 ---
+POPPED: node=34, path=[38, 39, 44], remaining_picks=[]
+Exploring node 34, new path: [38, 39, 44, 34]
+  Validating Type requirements for group: [38, 39, 44, 34]
+   ✅ Node 38 (Type: All) needs 3 connections and has 3
+   ✅ Node 39 (Type: Half+) needs 2 connections and has 3
+   ✅ Node 44 (Type: One+) needs 1 connections and has 3
+   ✅ Node 34 (Type: All) needs 3 connections and has 3
+🎉 FOUND COMPLETE GROUP: [38, 39, 44, 34]
+✅ Group Created (ID 1883)
+Assigned group ID 1883 to group: [38, 39, 44, 34]
+Remaining seeds: [4, 26, 15, 9, 37, 47, 36, 40, 30, 49, 1, 39, 45, 19, 12, 5, 29, 21, 42, 6, 32, 44, 46, 34, 24, 14, 18, 25, 48, 10, 28, 43, 2, 7, 11, 13, 35, 22, 27, 20, 41, 0]
+=== Starting DFS with seed node: 37 ===
+--- Loop 1 ---
+POPPED: node=37, path=[], remaining_picks=[]
+Exploring node 37, new path: [37]
+Node 37 of type One+ that needs 1 has 1 r_conns with path: [37].
+Valid MAC picks for 37: []
+No valid MAC picks for 37, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 37
+=== Starting DFS with seed node: 47 ===
+--- Loop 1 ---
+POPPED: node=47, path=[], remaining_picks=[]
+Exploring node 47, new path: [47]
+Node 47 of type One+ that needs 1 has 1 r_conns with path: [47].
+Valid MAC picks for 47: []
+No valid MAC picks for 47, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 47
+=== Starting DFS with seed node: 36 ===
+--- Loop 1 ---
+POPPED: node=36, path=[], remaining_picks=[]
+Exploring node 36, new path: [36]
+Node 36 of type Half+ that needs 2 has 2 r_conns with path: [36].
+Valid MAC picks for 36: []
+No valid MAC picks for 36, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 36
+=== Starting DFS with seed node: 40 ===
+--- Loop 1 ---
+POPPED: node=40, path=[], remaining_picks=[]
+Exploring node 40, new path: [40]
+Node 40 of type Half+ that needs 2 has 2 r_conns with path: [40].
+Valid MAC picks for 40: []
+No valid MAC picks for 40, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 40
+=== Starting DFS with seed node: 30 ===
+--- Loop 1 ---
+POPPED: node=30, path=[], remaining_picks=[]
+Exploring node 30, new path: [30]
+Node 30 of type One+ that needs 1 has 1 r_conns with path: [30].
+Valid MAC picks for 30: []
+No valid MAC picks for 30, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 30
+=== Starting DFS with seed node: 49 ===
+--- Loop 1 ---
+POPPED: node=49, path=[], remaining_picks=[]
+Exploring node 49, new path: [49]
+Node 49 of type One+ that needs 1 has 1 r_conns with path: [49].
+Valid MAC picks for 49: []
+No valid MAC picks for 49, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 49
+=== Starting DFS with seed node: 1 ===
+--- Loop 1 ---
+POPPED: node=1, path=[], remaining_picks=[]
+Exploring node 1, new path: [1]
+Node 1 of type All that needs 3 has 3 r_conns with path: [1].
+Valid MAC picks for 1: []
+No valid MAC picks for 1, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 1
+=== Starting DFS with seed node: 39 ===
+--- Loop 1 ---
+POPPED: node=39, path=[], remaining_picks=[]
+Exploring node 39, new path: [39]
+Node 39 of type Half+ that needs 2 has 2 r_conns with path: [39].
+Valid MAC picks for 39: []
+No valid MAC picks for 39, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 39
+=== Starting DFS with seed node: 45 ===
+--- Loop 1 ---
+POPPED: node=45, path=[], remaining_picks=[]
+Exploring node 45, new path: [45]
+Node 45 of type One+ that needs 1 has 1 r_conns with path: [45].
+Valid MAC picks for 45: []
+No valid MAC picks for 45, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 45
+=== Starting DFS with seed node: 19 ===
+--- Loop 1 ---
+POPPED: node=19, path=[], remaining_picks=[]
+Exploring node 19, new path: [19]
+Node 19 of type Half+ that needs 2 has 2 r_conns with path: [19].
+Valid MAC picks for 19: []
+No valid MAC picks for 19, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 19
+=== Starting DFS with seed node: 12 ===
+--- Loop 1 ---
+POPPED: node=12, path=[], remaining_picks=[]
+Exploring node 12, new path: [12]
+Node 12 of type One+ that needs 1 has 1 r_conns with path: [12].
+Valid MAC picks for 12: []
+No valid MAC picks for 12, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 12
+=== Starting DFS with seed node: 5 ===
+--- Loop 1 ---
+POPPED: node=5, path=[], remaining_picks=[]
+Exploring node 5, new path: [5]
+Node 5 of type All that needs 3 has 3 r_conns with path: [5].
+Valid MAC picks for 5: []
+No valid MAC picks for 5, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 5
+=== Starting DFS with seed node: 29 ===
+--- Loop 1 ---
+POPPED: node=29, path=[], remaining_picks=[]
+Exploring node 29, new path: [29]
+Node 29 of type One+ that needs 1 has 1 r_conns with path: [29].
+Valid MAC picks for 29: []
+No valid MAC picks for 29, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 29
+=== Starting DFS with seed node: 21 ===
+--- Loop 1 ---
+POPPED: node=21, path=[], remaining_picks=[]
+Exploring node 21, new path: [21]
+Node 21 of type One+ that needs 1 has 1 r_conns with path: [21].
+Valid MAC picks for 21: []
+No valid MAC picks for 21, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 21
+=== Starting DFS with seed node: 42 ===
+--- Loop 1 ---
+POPPED: node=42, path=[], remaining_picks=[]
+Exploring node 42, new path: [42]
+Node 42 of type Half+ that needs 2 has 2 r_conns with path: [42].
+Valid MAC picks for 42: []
+No valid MAC picks for 42, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 42
+=== Starting DFS with seed node: 6 ===
+--- Loop 1 ---
+POPPED: node=6, path=[], remaining_picks=[]
+Exploring node 6, new path: [6]
+Node 6 of type One+ that needs 1 has 1 r_conns with path: [6].
+Valid MAC picks for 6: []
+No valid MAC picks for 6, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 6
+=== Starting DFS with seed node: 32 ===
+--- Loop 1 ---
+POPPED: node=32, path=[], remaining_picks=[]
+Exploring node 32, new path: [32]
+Node 32 of type Half+ that needs 2 has 2 r_conns with path: [32].
+Valid MAC picks for 32: []
+No valid MAC picks for 32, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 32
+=== Starting DFS with seed node: 44 ===
+--- Loop 1 ---
+POPPED: node=44, path=[], remaining_picks=[]
+Exploring node 44, new path: [44]
+Node 44 of type One+ that needs 1 has 1 r_conns with path: [44].
+Valid MAC picks for 44: []
+No valid MAC picks for 44, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 44
+=== Starting DFS with seed node: 46 ===
+--- Loop 1 ---
+POPPED: node=46, path=[], remaining_picks=[]
+Exploring node 46, new path: [46]
+Node 46 of type One+ that needs 1 has 1 r_conns with path: [46].
+Valid MAC picks for 46: []
+No valid MAC picks for 46, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 46
+=== Starting DFS with seed node: 34 ===
+--- Loop 1 ---
+POPPED: node=34, path=[], remaining_picks=[]
+Exploring node 34, new path: [34]
+Node 34 of type All that needs 3 has 3 r_conns with path: [34].
+❌ group constraint violated: nodes 34 and 38 share group(s) {1883} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+❌ group constraint violated: nodes 34 and 39 share group(s) {1883} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+❌ group constraint violated: nodes 34 and 44 share group(s) {1883} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+Valid MAC picks for 34: [12, 22, 21, 27, 46, 48, 43]
+Best pick: 12, remaining: [22, 21, 27, 46, 48, 43]
+Added backtrack option: node=34, remaining_picks=[22, 21, 27, 46, 48, 43]
+Exploring best pick: 12 with path: [34]
+Stack state: [(34, [], [22, 21, 27, 46, 48, 43]), (12, [34], [])]
+--- Loop 2 ---
+POPPED: node=12, path=[34], remaining_picks=[]
+Exploring node 12, new path: [34, 12]
+Node 34 of type All that needs 3 has 2 r_conns with path: [34, 12].
+Node 12 of type One+ that needs 1 has 0 r_conns with path: [34, 12].
+❌ group constraint violated: nodes 34 and 39 share group(s) {1883} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+❌ group constraint violated: nodes 34 and 44 share group(s) {1883} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+Valid MAC picks for 12: [32, 27, 22, 36, 48, 20, 47, 26]
+Best pick: 32, remaining: [27, 22, 36, 48, 20, 47, 26]
+Added backtrack option: node=12, remaining_picks=[27, 22, 36, 48, 20, 47, 26]
+Exploring best pick: 32 with path: [34, 12]
+Stack state: [(34, [], [22, 21, 27, 46, 48, 43]), (12, [34], [27, 22, 36, 48, 20, 47, 26]), (32, [34, 12], [])]
+--- Loop 3 ---
+POPPED: node=32, path=[34, 12], remaining_picks=[]
+Exploring node 32, new path: [34, 12, 32]
+Node 34 of type All that needs 3 has 1 r_conns with path: [34, 12, 32].
+Node 12 of type One+ that needs 1 has 0 r_conns with path: [34, 12, 32].
+Node 32 of type Half+ that needs 2 has 0 r_conns with path: [34, 12, 32].
+Valid MAC picks for 32: [26, 21, 13, 45, 48]
+Best pick: 26, remaining: [21, 13, 45, 48]
+Added backtrack option: node=32, remaining_picks=[21, 13, 45, 48]
+Exploring best pick: 26 with path: [34, 12, 32]
+Stack state: [(34, [], [22, 21, 27, 46, 48, 43]), (12, [34], [27, 22, 36, 48, 20, 47, 26]), (32, [34, 12], [21, 13, 45, 48]), (26, [34, 12, 32], [])]
+--- Loop 4 ---
+POPPED: node=26, path=[34, 12, 32], remaining_picks=[]
+Exploring node 26, new path: [34, 12, 32, 26]
+  Validating Type requirements for group: [34, 12, 32, 26]
+   ✅ Node 34 (Type: All) needs 3 connections and has 3
+   ✅ Node 12 (Type: One+) needs 1 connections and has 3
+   ✅ Node 32 (Type: Half+) needs 2 connections and has 3
+   ✅ Node 26 (Type: One+) needs 1 connections and has 3
+🎉 FOUND COMPLETE GROUP: [34, 12, 32, 26]
+✅ Group Created (ID 4565)
+Assigned group ID 4565 to group: [34, 12, 32, 26]
+Remaining seeds: [4, 26, 15, 9, 37, 47, 36, 40, 30, 49, 1, 39, 45, 19, 12, 5, 29, 21, 42, 6, 32, 44, 46, 24, 14, 18, 25, 48, 10, 28, 43, 2, 7, 11, 13, 35, 22, 27, 20, 41, 0]
+=== Starting DFS with seed node: 24 ===
+--- Loop 1 ---
+POPPED: node=24, path=[], remaining_picks=[]
+Exploring node 24, new path: [24]
+Node 24 of type All that needs 3 has 3 r_conns with path: [24].
+Valid MAC picks for 24: [18, 19, 20, 26, 40, 35, 44]
+Best pick: 18, remaining: [19, 20, 26, 40, 35, 44]
+Added backtrack option: node=24, remaining_picks=[19, 20, 26, 40, 35, 44]
+Exploring best pick: 18 with path: [24]
+Stack state: [(24, [], [19, 20, 26, 40, 35, 44]), (18, [24], [])]
+--- Loop 2 ---
+POPPED: node=18, path=[24], remaining_picks=[]
+Exploring node 18, new path: [24, 18]
+Node 24 of type All that needs 3 has 2 r_conns with path: [24, 18].
+Node 18 of type One+ that needs 1 has 0 r_conns with path: [24, 18].
+Valid MAC picks for 18: [15, 32, 35, 13, 19, 39]
+Best pick: 15, remaining: [32, 35, 13, 19, 39]
+Added backtrack option: node=18, remaining_picks=[32, 35, 13, 19, 39]
+Exploring best pick: 15 with path: [24, 18]
+Stack state: [(24, [], [19, 20, 26, 40, 35, 44]), (18, [24], [32, 35, 13, 19, 39]), (15, [24, 18], [])]
+--- Loop 3 ---
+POPPED: node=15, path=[24, 18], remaining_picks=[]
+Exploring node 15, new path: [24, 18, 15]
+Node 24 of type All that needs 3 has 1 r_conns with path: [24, 18, 15].
+Node 18 of type One+ that needs 1 has 0 r_conns with path: [24, 18, 15].
+Node 15 of type Half+ that needs 2 has 0 r_conns with path: [24, 18, 15].
+Valid MAC picks for 15: [48, 13, 44]
+Best pick: 48, remaining: [13, 44]
+Added backtrack option: node=15, remaining_picks=[13, 44]
+Exploring best pick: 48 with path: [24, 18, 15]
+Stack state: [(24, [], [19, 20, 26, 40, 35, 44]), (18, [24], [32, 35, 13, 19, 39]), (15, [24, 18], [13, 44]), (48, [24, 18, 15], [])]
+--- Loop 4 ---
+POPPED: node=48, path=[24, 18, 15], remaining_picks=[]
+Exploring node 48, new path: [24, 18, 15, 48]
+  Validating Type requirements for group: [24, 18, 15, 48]
+   ✅ Node 24 (Type: All) needs 3 connections and has 3
+   ✅ Node 18 (Type: One+) needs 1 connections and has 3
+   ✅ Node 15 (Type: Half+) needs 2 connections and has 3
+   ✅ Node 48 (Type: All) needs 3 connections and has 3
+🎉 FOUND COMPLETE GROUP: [24, 18, 15, 48]
+✅ Group Created (ID 9407)
+Assigned group ID 9407 to group: [24, 18, 15, 48]
+Remaining seeds: [4, 26, 15, 9, 37, 47, 36, 40, 30, 49, 1, 39, 45, 19, 12, 5, 29, 21, 42, 6, 32, 44, 46, 14, 18, 25, 48, 10, 28, 43, 2, 7, 11, 13, 35, 22, 27, 20, 41, 0]
+=== Starting DFS with seed node: 14 ===
+--- Loop 1 ---
+POPPED: node=14, path=[], remaining_picks=[]
+Exploring node 14, new path: [14]
+Node 14 of type One+ that needs 1 has 1 r_conns with path: [14].
+Valid MAC picks for 14: []
+No valid MAC picks for 14, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 14
+=== Starting DFS with seed node: 18 ===
+--- Loop 1 ---
+POPPED: node=18, path=[], remaining_picks=[]
+Exploring node 18, new path: [18]
+Node 18 of type One+ that needs 1 has 1 r_conns with path: [18].
+Valid MAC picks for 18: []
+No valid MAC picks for 18, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 18
+=== Starting DFS with seed node: 25 ===
+--- Loop 1 ---
+POPPED: node=25, path=[], remaining_picks=[]
+Exploring node 25, new path: [25]
+Node 25 of type One+ that needs 1 has 1 r_conns with path: [25].
+Valid MAC picks for 25: []
+No valid MAC picks for 25, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 25
+=== Starting DFS with seed node: 48 ===
+--- Loop 1 ---
+POPPED: node=48, path=[], remaining_picks=[]
+Exploring node 48, new path: [48]
+Node 48 of type All that needs 3 has 3 r_conns with path: [48].
+❌ group constraint violated: nodes 48 and 24 share group(s) {9407} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+Valid MAC picks for 48: [49, 14, 20, 21, 29, 36, 38, 41, 44, 12, 13, 19, 32]
+Best pick: 49, remaining: [14, 20, 21, 29, 36, 38, 41, 44, 12, 13, 19, 32]
+Added backtrack option: node=48, remaining_picks=[14, 20, 21, 29, 36, 38, 41, 44, 12, 13, 19, 32]
+Exploring best pick: 49 with path: [48]
+Stack state: [(48, [], [14, 20, 21, 29, 36, 38, 41, 44, 12, 13, 19, 32]), (49, [48], [])]
+--- Loop 2 ---
+POPPED: node=49, path=[48], remaining_picks=[]
+Exploring node 49, new path: [48, 49]
+Node 48 of type All that needs 3 has 2 r_conns with path: [48, 49].
+Node 49 of type One+ that needs 1 has 0 r_conns with path: [48, 49].
+❌ group constraint violated: nodes 48 and 15 share group(s) {9407} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+Valid MAC picks for 49: [46, 13, 14, 20, 45]
+Best pick: 46, remaining: [13, 14, 20, 45]
+Added backtrack option: node=49, remaining_picks=[13, 14, 20, 45]
+Exploring best pick: 46 with path: [48, 49]
+Stack state: [(48, [], [14, 20, 21, 29, 36, 38, 41, 44, 12, 13, 19, 32]), (49, [48], [13, 14, 20, 45]), (46, [48, 49], [])]
+--- Loop 3 ---
+POPPED: node=46, path=[48, 49], remaining_picks=[]
+Exploring node 46, new path: [48, 49, 46]
+Node 48 of type All that needs 3 has 1 r_conns with path: [48, 49, 46].
+Node 49 of type One+ that needs 1 has 0 r_conns with path: [48, 49, 46].
+Node 46 of type One+ that needs 1 has 0 r_conns with path: [48, 49, 46].
+❌ group constraint violated: nodes 48 and 15 share group(s) {9407} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+❌ group constraint violated: nodes 48 and 24 share group(s) {9407} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+Valid MAC picks for 46: [13, 29, 44, 45, 21]
+Best pick: 13, remaining: [29, 44, 45, 21]
+Added backtrack option: node=46, remaining_picks=[29, 44, 45, 21]
+Exploring best pick: 13 with path: [48, 49, 46]
+Stack state: [(48, [], [14, 20, 21, 29, 36, 38, 41, 44, 12, 13, 19, 32]), (49, [48], [13, 14, 20, 45]), (46, [48, 49], [29, 44, 45, 21]), (13, [48, 49, 46], [])]
+--- Loop 4 ---
+POPPED: node=13, path=[48, 49, 46], remaining_picks=[]
+Exploring node 13, new path: [48, 49, 46, 13]
+  Validating Type requirements for group: [48, 49, 46, 13]
+   ✅ Node 48 (Type: All) needs 3 connections and has 3
+   ✅ Node 49 (Type: One+) needs 1 connections and has 3
+   ✅ Node 46 (Type: One+) needs 1 connections and has 3
+   ✅ Node 13 (Type: One+) needs 1 connections and has 3
+🎉 FOUND COMPLETE GROUP: [48, 49, 46, 13]
+✅ Group Created (ID 3706)
+Assigned group ID 3706 to group: [48, 49, 46, 13]
+Remaining seeds: [4, 26, 15, 9, 37, 47, 36, 40, 30, 49, 1, 39, 45, 19, 12, 5, 29, 21, 42, 6, 32, 44, 46, 14, 18, 25, 10, 28, 43, 2, 7, 11, 13, 35, 22, 27, 20, 41, 0]
+=== Starting DFS with seed node: 10 ===
+--- Loop 1 ---
+POPPED: node=10, path=[], remaining_picks=[]
+Exploring node 10, new path: [10]
+Node 10 of type All that needs 3 has 3 r_conns with path: [10].
+Valid MAC picks for 10: []
+No valid MAC picks for 10, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 10
+=== Starting DFS with seed node: 28 ===
+--- Loop 1 ---
+POPPED: node=28, path=[], remaining_picks=[]
+Exploring node 28, new path: [28]
+Node 28 of type One+ that needs 1 has 1 r_conns with path: [28].
+Valid MAC picks for 28: []
+No valid MAC picks for 28, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 28
+=== Starting DFS with seed node: 43 ===
+--- Loop 1 ---
+POPPED: node=43, path=[], remaining_picks=[]
+Exploring node 43, new path: [43]
+Node 43 of type One+ that needs 1 has 1 r_conns with path: [43].
+Valid MAC picks for 43: []
+No valid MAC picks for 43, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 43
+=== Starting DFS with seed node: 2 ===
+--- Loop 1 ---
+POPPED: node=2, path=[], remaining_picks=[]
+Exploring node 2, new path: [2]
+Node 2 of type One+ that needs 1 has 1 r_conns with path: [2].
+Valid MAC picks for 2: []
+No valid MAC picks for 2, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 2
+=== Starting DFS with seed node: 7 ===
+--- Loop 1 ---
+POPPED: node=7, path=[], remaining_picks=[]
+Exploring node 7, new path: [7]
+Node 7 of type One+ that needs 1 has 1 r_conns with path: [7].
+Valid MAC picks for 7: []
+No valid MAC picks for 7, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 7
+=== Starting DFS with seed node: 11 ===
+--- Loop 1 ---
+POPPED: node=11, path=[], remaining_picks=[]
+Exploring node 11, new path: [11]
+Node 11 of type Half+ that needs 2 has 2 r_conns with path: [11].
+Valid MAC picks for 11: []
+No valid MAC picks for 11, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 11
+=== Starting DFS with seed node: 13 ===
+--- Loop 1 ---
+POPPED: node=13, path=[], remaining_picks=[]
+Exploring node 13, new path: [13]
+Node 13 of type One+ that needs 1 has 1 r_conns with path: [13].
+Valid MAC picks for 13: []
+No valid MAC picks for 13, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 13
+=== Starting DFS with seed node: 35 ===
+--- Loop 1 ---
+POPPED: node=35, path=[], remaining_picks=[]
+Exploring node 35, new path: [35]
+Node 35 of type All that needs 3 has 3 r_conns with path: [35].
+Valid MAC picks for 35: [38, 40, 12, 18, 24]
+Best pick: 38, remaining: [40, 12, 18, 24]
+Added backtrack option: node=35, remaining_picks=[40, 12, 18, 24]
+Exploring best pick: 38 with path: [35]
+Stack state: [(35, [], [40, 12, 18, 24]), (38, [35], [])]
+--- Loop 2 ---
+POPPED: node=38, path=[35], remaining_picks=[]
+Exploring node 38, new path: [35, 38]
+Node 35 of type All that needs 3 has 2 r_conns with path: [35, 38].
+Node 38 of type All that needs 3 has 2 r_conns with path: [35, 38].
+❌ group constraint violated: nodes 38 and 39 share group(s) {1883} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+❌ group constraint violated: nodes 38 and 44 share group(s) {1883} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+Valid MAC picks for 38: [42, 21, 48, 37, 20, 15]
+Best pick: 42, remaining: [21, 48, 37, 20, 15]
+Added backtrack option: node=38, remaining_picks=[21, 48, 37, 20, 15]
+Exploring best pick: 42 with path: [35, 38]
+Stack state: [(35, [], [40, 12, 18, 24]), (38, [35], [21, 48, 37, 20, 15]), (42, [35, 38], [])]
+--- Loop 3 ---
+POPPED: node=42, path=[35, 38], remaining_picks=[]
+Exploring node 42, new path: [35, 38, 42]
+Node 35 of type All that needs 3 has 2 r_conns with path: [35, 38, 42].
+Path [35, 38, 42] is not feasible, backtracking...
+--- Loop 4 ---
+POPPED: node=38, path=[35], remaining_picks=[21, 48, 37, 20, 15]
+Trying next pick from current level: 21
+--- Loop 5 ---
+POPPED: node=21, path=[35, 38], remaining_picks=[]
+Exploring node 21, new path: [35, 38, 21]
+Node 35 of type All that needs 3 has 2 r_conns with path: [35, 38, 21].
+Path [35, 38, 21] is not feasible, backtracking...
+--- Loop 6 ---
+POPPED: node=38, path=[35], remaining_picks=[48, 37, 20, 15]
+Trying next pick from current level: 48
+--- Loop 7 ---
+POPPED: node=48, path=[35, 38], remaining_picks=[]
+Exploring node 48, new path: [35, 38, 48]
+Node 35 of type All that needs 3 has 2 r_conns with path: [35, 38, 48].
+Path [35, 38, 48] is not feasible, backtracking...
+--- Loop 8 ---
+POPPED: node=38, path=[35], remaining_picks=[37, 20, 15]
+Trying next pick from current level: 37
+--- Loop 9 ---
+POPPED: node=37, path=[35, 38], remaining_picks=[]
+Exploring node 37, new path: [35, 38, 37]
+Node 35 of type All that needs 3 has 2 r_conns with path: [35, 38, 37].
+Path [35, 38, 37] is not feasible, backtracking...
+--- Loop 10 ---
+POPPED: node=38, path=[35], remaining_picks=[20, 15]
+Trying next pick from current level: 20
+--- Loop 11 ---
+POPPED: node=20, path=[35, 38], remaining_picks=[]
+Exploring node 20, new path: [35, 38, 20]
+Node 35 of type All that needs 3 has 1 r_conns with path: [35, 38, 20].
+Node 38 of type All that needs 3 has 1 r_conns with path: [35, 38, 20].
+Node 20 of type One+ that needs 1 has 0 r_conns with path: [35, 38, 20].
+❌ group constraint violated: nodes 38 and 34 share group(s) {1883} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+❌ group constraint violated: nodes 38 and 39 share group(s) {1883} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+❌ group constraint violated: nodes 38 and 44 share group(s) {1883} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+Valid MAC picks for 20: [15, 46, 48, 21, 27]
+Best pick: 15, remaining: [46, 48, 21, 27]
+Added backtrack option: node=20, remaining_picks=[46, 48, 21, 27]
+Exploring best pick: 15 with path: [35, 38, 20]
+Stack state: [(35, [], [40, 12, 18, 24]), (38, [35], [15]), (20, [35, 38], [46, 48, 21, 27]), (15, [35, 38, 20], [])]
+--- Loop 12 ---
+POPPED: node=15, path=[35, 38, 20], remaining_picks=[]
+Exploring node 15, new path: [35, 38, 20, 15]
+  Validating Type requirements for group: [35, 38, 20, 15]
+   ❌ Node 35 (Type: All) needs 3 connections but only has 2
+❌ Group [35, 38, 20, 15] rejected - not all members meet type requirements
+--- Loop 13 ---
+POPPED: node=20, path=[35, 38], remaining_picks=[46, 48, 21, 27]
+Trying next pick from current level: 46
+--- Loop 14 ---
+POPPED: node=46, path=[35, 38, 20], remaining_picks=[]
+Exploring node 46, new path: [35, 38, 20, 46]
+  Validating Type requirements for group: [35, 38, 20, 46]
+   ✅ Node 35 (Type: All) needs 3 connections and has 3
+   ❌ Node 38 (Type: All) needs 3 connections but only has 2
+❌ Group [35, 38, 20, 46] rejected - not all members meet type requirements
+--- Loop 15 ---
+POPPED: node=20, path=[35, 38], remaining_picks=[48, 21, 27]
+Trying next pick from current level: 48
+--- Loop 16 ---
+POPPED: node=48, path=[35, 38, 20], remaining_picks=[]
+Node 48 already visited, backtracking...
+--- Loop 17 ---
+POPPED: node=20, path=[35, 38], remaining_picks=[21, 27]
+Trying next pick from current level: 21
+--- Loop 18 ---
+POPPED: node=21, path=[35, 38, 20], remaining_picks=[]
+Node 21 already visited, backtracking...
+--- Loop 19 ---
+POPPED: node=20, path=[35, 38], remaining_picks=[27]
+Trying next pick from current level: 27
+--- Loop 20 ---
+POPPED: node=27, path=[35, 38, 20], remaining_picks=[]
+Exploring node 27, new path: [35, 38, 20, 27]
+  Validating Type requirements for group: [35, 38, 20, 27]
+   ❌ Node 35 (Type: All) needs 3 connections but only has 2
+❌ Group [35, 38, 20, 27] rejected - not all members meet type requirements
+--- Loop 21 ---
+POPPED: node=20, path=[35, 38], remaining_picks=[]
+Node 20 already visited, backtracking...
+--- Loop 22 ---
+POPPED: node=38, path=[35], remaining_picks=[15]
+Trying next pick from current level: 15
+--- Loop 23 ---
+POPPED: node=15, path=[35, 38], remaining_picks=[]
+Node 15 already visited, backtracking...
+--- Loop 24 ---
+POPPED: node=38, path=[35], remaining_picks=[]
+Node 38 already visited, backtracking...
+--- Loop 25 ---
+POPPED: node=35, path=[], remaining_picks=[40, 12, 18, 24]
+Trying next pick from current level: 40
+--- Loop 26 ---
+POPPED: node=40, path=[35], remaining_picks=[]
+Exploring node 40, new path: [35, 40]
+Node 35 of type All that needs 3 has 2 r_conns with path: [35, 40].
+Node 40 of type Half+ that needs 2 has 1 r_conns with path: [35, 40].
+Valid MAC picks for 40: [24]
+Best pick: 24, remaining: []
+Exploring best pick: 24 with path: [35, 40]
+Stack state: [(35, [], [12, 18, 24]), (24, [35, 40], [])]
+--- Loop 27 ---
+POPPED: node=24, path=[35, 40], remaining_picks=[]
+Exploring node 24, new path: [35, 40, 24]
+Node 35 of type All that needs 3 has 1 r_conns with path: [35, 40, 24].
+Node 40 of type Half+ that needs 2 has 0 r_conns with path: [35, 40, 24].
+Node 24 of type All that needs 3 has 1 r_conns with path: [35, 40, 24].
+❌ group constraint violated: nodes 24 and 18 share group(s) {9407} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+Valid MAC picks for 24: [19, 20, 26, 44]
+Best pick: 19, remaining: [20, 26, 44]
+Added backtrack option: node=24, remaining_picks=[20, 26, 44]
+Exploring best pick: 19 with path: [35, 40, 24]
+Stack state: [(35, [], [12, 18, 24]), (24, [35, 40], [20, 26, 44]), (19, [35, 40, 24], [])]
+--- Loop 28 ---
+POPPED: node=19, path=[35, 40, 24], remaining_picks=[]
+Exploring node 19, new path: [35, 40, 24, 19]
+  Validating Type requirements for group: [35, 40, 24, 19]
+   ❌ Node 35 (Type: All) needs 3 connections but only has 2
+❌ Group [35, 40, 24, 19] rejected - not all members meet type requirements
+--- Loop 29 ---
+POPPED: node=24, path=[35, 40], remaining_picks=[20, 26, 44]
+Trying next pick from current level: 20
+--- Loop 30 ---
+POPPED: node=20, path=[35, 40, 24], remaining_picks=[]
+Node 20 already visited, backtracking...
+--- Loop 31 ---
+POPPED: node=24, path=[35, 40], remaining_picks=[26, 44]
+Trying next pick from current level: 26
+--- Loop 32 ---
+POPPED: node=26, path=[35, 40, 24], remaining_picks=[]
+Exploring node 26, new path: [35, 40, 24, 26]
+  Validating Type requirements for group: [35, 40, 24, 26]
+   ❌ Node 35 (Type: All) needs 3 connections but only has 2
+❌ Group [35, 40, 24, 26] rejected - not all members meet type requirements
+--- Loop 33 ---
+POPPED: node=24, path=[35, 40], remaining_picks=[44]
+Trying next pick from current level: 44
+--- Loop 34 ---
+POPPED: node=44, path=[35, 40, 24], remaining_picks=[]
+Exploring node 44, new path: [35, 40, 24, 44]
+  Validating Type requirements for group: [35, 40, 24, 44]
+   ❌ Node 35 (Type: All) needs 3 connections but only has 2
+❌ Group [35, 40, 24, 44] rejected - not all members meet type requirements
+--- Loop 35 ---
+POPPED: node=24, path=[35, 40], remaining_picks=[]
+Node 24 already visited, backtracking...
+--- Loop 36 ---
+POPPED: node=35, path=[], remaining_picks=[12, 18, 24]
+Trying next pick from current level: 12
+--- Loop 37 ---
+POPPED: node=12, path=[35], remaining_picks=[]
+Exploring node 12, new path: [35, 12]
+Node 35 of type All that needs 3 has 2 r_conns with path: [35, 12].
+Node 12 of type One+ that needs 1 has 0 r_conns with path: [35, 12].
+❌ group constraint violated: nodes 12 and 32 share group(s) {4565} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+Valid MAC picks for 12: [20]
+Best pick: 20, remaining: []
+Exploring best pick: 20 with path: [35, 12]
+Stack state: [(35, [], [18, 24]), (20, [35, 12], [])]
+--- Loop 38 ---
+POPPED: node=20, path=[35, 12], remaining_picks=[]
+Node 20 already visited, backtracking...
+--- Loop 39 ---
+POPPED: node=35, path=[], remaining_picks=[18, 24]
+Trying next pick from current level: 18
+--- Loop 40 ---
+POPPED: node=18, path=[35], remaining_picks=[]
+Exploring node 18, new path: [35, 18]
+Node 35 of type All that needs 3 has 2 r_conns with path: [35, 18].
+Node 18 of type One+ that needs 1 has 0 r_conns with path: [35, 18].
+❌ group constraint violated: nodes 18 and 24 share group(s) {9407} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+Valid MAC picks for 18: [32]
+Best pick: 32, remaining: []
+Exploring best pick: 32 with path: [35, 18]
+Stack state: [(35, [], [24]), (32, [35, 18], [])]
+--- Loop 41 ---
+POPPED: node=32, path=[35, 18], remaining_picks=[]
+Exploring node 32, new path: [35, 18, 32]
+Node 35 of type All that needs 3 has 1 r_conns with path: [35, 18, 32].
+Node 18 of type One+ that needs 1 has 0 r_conns with path: [35, 18, 32].
+Node 32 of type Half+ that needs 2 has 0 r_conns with path: [35, 18, 32].
+❌ group constraint violated: nodes 18 and 24 share group(s) {9407} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+Valid MAC picks for 32: [45]
+Best pick: 45, remaining: []
+Exploring best pick: 45 with path: [35, 18, 32]
+Stack state: [(35, [], [24]), (45, [35, 18, 32], [])]
+--- Loop 42 ---
+POPPED: node=45, path=[35, 18, 32], remaining_picks=[]
+Exploring node 45, new path: [35, 18, 32, 45]
+  Validating Type requirements for group: [35, 18, 32, 45]
+   ✅ Node 35 (Type: All) needs 3 connections and has 3
+   ✅ Node 18 (Type: One+) needs 1 connections and has 2
+   ✅ Node 32 (Type: Half+) needs 2 connections and has 3
+   ✅ Node 45 (Type: One+) needs 1 connections and has 2
+🎉 FOUND COMPLETE GROUP: [35, 18, 32, 45]
+✅ Group Created (ID 7031)
+Assigned group ID 7031 to group: [35, 18, 32, 45]
+Remaining seeds: [4, 26, 15, 9, 37, 47, 36, 40, 30, 49, 1, 39, 45, 19, 12, 5, 29, 21, 42, 6, 32, 44, 46, 14, 18, 25, 10, 28, 43, 2, 7, 11, 13, 22, 27, 20, 41, 0]
+=== Starting DFS with seed node: 22 ===
+--- Loop 1 ---
+POPPED: node=22, path=[], remaining_picks=[]
+Exploring node 22, new path: [22]
+Node 22 of type All that needs 3 has 3 r_conns with path: [22].
+Valid MAC picks for 22: [42, 26, 19, 28, 47]
+Best pick: 42, remaining: [26, 19, 28, 47]
+Added backtrack option: node=22, remaining_picks=[26, 19, 28, 47]
+Exploring best pick: 42 with path: [22]
+Stack state: [(22, [], [26, 19, 28, 47]), (42, [22], [])]
+--- Loop 2 ---
+POPPED: node=42, path=[22], remaining_picks=[]
+Exploring node 42, new path: [22, 42]
+Node 22 of type All that needs 3 has 2 r_conns with path: [22, 42].
+Node 42 of type Half+ that needs 2 has 1 r_conns with path: [22, 42].
+Valid MAC picks for 42: [13, 14]
+Best pick: 13, remaining: [14]
+Added backtrack option: node=42, remaining_picks=[14]
+Exploring best pick: 13 with path: [22, 42]
+Stack state: [(22, [], [26, 19, 28, 47]), (42, [22], [14]), (13, [22, 42], [])]
+--- Loop 3 ---
+POPPED: node=13, path=[22, 42], remaining_picks=[]
+Exploring node 13, new path: [22, 42, 13]
+Node 22 of type All that needs 3 has 1 r_conns with path: [22, 42, 13].
+Node 42 of type Half+ that needs 2 has 0 r_conns with path: [22, 42, 13].
+Node 13 of type One+ that needs 1 has 0 r_conns with path: [22, 42, 13].
+❌ group constraint violated: nodes 13 and 48 share group(s) {3706} but do not have mutual +ve irl ratings (A→B: 0, B→A: 0)
+Valid MAC picks for 13: [12, 20, 14]
+Best pick: 12, remaining: [20, 14]
+Added backtrack option: node=13, remaining_picks=[20, 14]
+Exploring best pick: 12 with path: [22, 42, 13]
+Stack state: [(22, [], [26, 19, 28, 47]), (42, [22], [14]), (13, [22, 42], [20, 14]), (12, [22, 42, 13], [])]
+--- Loop 4 ---
+POPPED: node=12, path=[22, 42, 13], remaining_picks=[]
+Exploring node 12, new path: [22, 42, 13, 12]
+  Validating Type requirements for group: [22, 42, 13, 12]
+   ✅ Node 22 (Type: All) needs 3 connections and has 3
+   ✅ Node 42 (Type: Half+) needs 2 connections and has 3
+   ✅ Node 13 (Type: One+) needs 1 connections and has 3
+   ✅ Node 12 (Type: One+) needs 1 connections and has 3
+🎉 FOUND COMPLETE GROUP: [22, 42, 13, 12]
+✅ Group Created (ID 9191)
+Assigned group ID 9191 to group: [22, 42, 13, 12]
+Remaining seeds: [4, 26, 15, 9, 37, 47, 36, 40, 30, 49, 1, 39, 45, 19, 12, 5, 29, 21, 42, 6, 32, 44, 46, 14, 18, 25, 10, 28, 43, 2, 7, 11, 13, 27, 20, 41, 0]
+=== Starting DFS with seed node: 27 ===
+--- Loop 1 ---
+POPPED: node=27, path=[], remaining_picks=[]
+Exploring node 27, new path: [27]
+Node 27 of type One+ that needs 1 has 1 r_conns with path: [27].
+Valid MAC picks for 27: []
+No valid MAC picks for 27, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 27
+=== Starting DFS with seed node: 20 ===
+--- Loop 1 ---
+POPPED: node=20, path=[], remaining_picks=[]
+Exploring node 20, new path: [20]
+Node 20 of type One+ that needs 1 has 1 r_conns with path: [20].
+Valid MAC picks for 20: []
+No valid MAC picks for 20, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 20
+=== Starting DFS with seed node: 41 ===
+--- Loop 1 ---
+POPPED: node=41, path=[], remaining_picks=[]
+Exploring node 41, new path: [41]
+Node 41 of type One+ that needs 1 has 1 r_conns with path: [41].
+Valid MAC picks for 41: []
+No valid MAC picks for 41, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 41
+=== Starting DFS with seed node: 0 ===
+--- Loop 1 ---
+POPPED: node=0, path=[], remaining_picks=[]
+Exploring node 0, new path: [0]
+Node 0 of type All that needs 3 has 3 r_conns with path: [0].
+Valid MAC picks for 0: []
+No valid MAC picks for 0, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 0
+🎯 Total groups found: 6
+Group 1 (ID 1883): [38, 39, 44, 34]
+Group 2 (ID 4565): [34, 12, 32, 26]
+Group 3 (ID 9407): [24, 18, 15, 48]
+Group 4 (ID 3706): [48, 49, 46, 13]
+Group 5 (ID 7031): [35, 18, 32, 45]
+Group 6 (ID 9191): [22, 42, 13, 12]
+⭐ Unique nodes in groups: 18 out of 43 available nodes in the graph.
+============================================================
+📊 DETAILED ANALYSIS FOR GROUP 1: [38, 39, 44, 34]
+🔗 Connectivity Score (sum of all edge weights in group): 23
+============================================================
+🔹 NODE 38 (Type: All, MAC: 2)
+    • General Stats: No. Connections to graph: 14 | Bans: 26
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 39 (Type: Half+, MAC: 2)
+       • 38 → 39: weight 2
+       • 39 → 38: weight 1
+     ✓ Connected to Node 44 (Type: One+, MAC: 2)
+       • 38 → 44: weight 2
+       • 44 → 38: weight 1
+     ✓ Connected to Node 34 (Type: All, MAC: 2)
+       • 38 → 34: weight 1
+       • 34 → 38: weight 3
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 3, Has 3 (✅ MEETS)
+🔹 NODE 39 (Type: Half+, MAC: 2)
+    • General Stats: No. Connections to graph: 14 | Bans: 18
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 38 (Type: All, MAC: 2)
+       • 39 → 38: weight 1
+       • 38 → 39: weight 2
+     ✓ Connected to Node 44 (Type: One+, MAC: 2)
+       • 39 → 44: weight 2
+       • 44 → 39: weight 1
+     ✓ Connected to Node 34 (Type: All, MAC: 2)
+       • 39 → 34: weight 3
+       • 34 → 39: weight 2
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 2, Has 3 (✅ MEETS)
+🔹 NODE 44 (Type: One+, MAC: 2)
+    • General Stats: No. Connections to graph: 16 | Bans: 0
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 38 (Type: All, MAC: 2)
+       • 44 → 38: weight 1
+       • 38 → 44: weight 2
+     ✓ Connected to Node 39 (Type: Half+, MAC: 2)
+       • 44 → 39: weight 1
+       • 39 → 44: weight 2
+     ✓ Connected to Node 34 (Type: All, MAC: 2)
+       • 44 → 34: weight 2
+       • 34 → 44: weight 3
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 1, Has 3 (✅ MEETS)
+🔹 NODE 34 (Type: All, MAC: 2)
+    • General Stats: No. Connections to graph: 18 | Bans: 7
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 38 (Type: All, MAC: 2)
+       • 34 → 38: weight 3
+       • 38 → 34: weight 1
+     ✓ Connected to Node 39 (Type: Half+, MAC: 2)
+       • 34 → 39: weight 2
+       • 39 → 34: weight 3
+     ✓ Connected to Node 44 (Type: One+, MAC: 2)
+       • 34 → 44: weight 3
+       • 44 → 34: weight 2
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 3, Has 3 (✅ MEETS)
+============================================================
+📊 DETAILED ANALYSIS FOR GROUP 2: [34, 12, 32, 26]
+🔗 Connectivity Score (sum of all edge weights in group): 22
+============================================================
+🔹 NODE 34 (Type: All, MAC: 2)
+    • General Stats: No. Connections to graph: 18 | Bans: 7
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 12 (Type: One+, MAC: 2)
+       • 34 → 12: weight 2
+       • 12 → 34: weight 1
+     ✓ Connected to Node 32 (Type: Half+, MAC: 2)
+       • 34 → 32: weight 1
+       • 32 → 34: weight 2
+     ✓ Connected to Node 26 (Type: One+, MAC: 2)
+       • 34 → 26: weight 1
+       • 26 → 34: weight 3
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 3, Has 3 (✅ MEETS)
+🔹 NODE 12 (Type: One+, MAC: 2)
+    • General Stats: No. Connections to graph: 22 | Bans: 1
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 34 (Type: All, MAC: 2)
+       • 12 → 34: weight 1
+       • 34 → 12: weight 2
+     ✓ Connected to Node 32 (Type: Half+, MAC: 2)
+       • 12 → 32: weight 2
+       • 32 → 12: weight 1
+     ✓ Connected to Node 26 (Type: One+, MAC: 2)
+       • 12 → 26: weight 3
+       • 26 → 12: weight 3
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 1, Has 3 (✅ MEETS)
+🔹 NODE 32 (Type: Half+, MAC: 2)
+    • General Stats: No. Connections to graph: 14 | Bans: 0
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 34 (Type: All, MAC: 2)
+       • 32 → 34: weight 2
+       • 34 → 32: weight 1
+     ✓ Connected to Node 12 (Type: One+, MAC: 2)
+       • 32 → 12: weight 1
+       • 12 → 32: weight 2
+     ✓ Connected to Node 26 (Type: One+, MAC: 2)
+       • 32 → 26: weight 2
+       • 26 → 32: weight 1
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 2, Has 3 (✅ MEETS)
+🔹 NODE 26 (Type: One+, MAC: 2)
+    • General Stats: No. Connections to graph: 18 | Bans: 1
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 34 (Type: All, MAC: 2)
+       • 26 → 34: weight 3
+       • 34 → 26: weight 1
+     ✓ Connected to Node 12 (Type: One+, MAC: 2)
+       • 26 → 12: weight 3
+       • 12 → 26: weight 3
+     ✓ Connected to Node 32 (Type: Half+, MAC: 2)
+       • 26 → 32: weight 1
+       • 32 → 26: weight 2
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 1, Has 3 (✅ MEETS)
+============================================================
+📊 DETAILED ANALYSIS FOR GROUP 3: [24, 18, 15, 48]
+🔗 Connectivity Score (sum of all edge weights in group): 19
+============================================================
+🔹 NODE 24 (Type: All, MAC: 2)
+    • General Stats: No. Connections to graph: 15 | Bans: 10
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 18 (Type: One+, MAC: 2)
+       • 24 → 18: weight 2
+       • 18 → 24: weight 2
+     ✓ Connected to Node 15 (Type: Half+, MAC: 2)
+       • 24 → 15: weight 1
+       • 15 → 24: weight 2
+     ✓ Connected to Node 48 (Type: All, MAC: 2)
+       • 24 → 48: weight 1
+       • 48 → 24: weight 3
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 3, Has 3 (✅ MEETS)
+🔹 NODE 18 (Type: One+, MAC: 2)
+    • General Stats: No. Connections to graph: 15 | Bans: 1
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 24 (Type: All, MAC: 2)
+       • 18 → 24: weight 2
+       • 24 → 18: weight 2
+     ✓ Connected to Node 15 (Type: Half+, MAC: 2)
+       • 18 → 15: weight 2
+       • 15 → 18: weight 1
+     ✓ Connected to Node 48 (Type: All, MAC: 2)
+       • 18 → 48: weight 1
+       • 48 → 18: weight 1
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 1, Has 3 (✅ MEETS)
+🔹 NODE 15 (Type: Half+, MAC: 2)
+    • General Stats: No. Connections to graph: 21 | Bans: 14
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 24 (Type: All, MAC: 2)
+       • 15 → 24: weight 2
+       • 24 → 15: weight 1
+     ✓ Connected to Node 18 (Type: One+, MAC: 2)
+       • 15 → 18: weight 1
+       • 18 → 15: weight 2
+     ✓ Connected to Node 48 (Type: All, MAC: 2)
+       • 15 → 48: weight 2
+       • 48 → 15: weight 1
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 2, Has 3 (✅ MEETS)
+🔹 NODE 48 (Type: All, MAC: 2)
+    • General Stats: No. Connections to graph: 24 | Bans: 0
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 24 (Type: All, MAC: 2)
+       • 48 → 24: weight 3
+       • 24 → 48: weight 1
+     ✓ Connected to Node 18 (Type: One+, MAC: 2)
+       • 48 → 18: weight 1
+       • 18 → 48: weight 1
+     ✓ Connected to Node 15 (Type: Half+, MAC: 2)
+       • 48 → 15: weight 1
+       • 15 → 48: weight 2
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 3, Has 3 (✅ MEETS)
+============================================================
+📊 DETAILED ANALYSIS FOR GROUP 4: [48, 49, 46, 13]
+🔗 Connectivity Score (sum of all edge weights in group): 20
+============================================================
+🔹 NODE 48 (Type: All, MAC: 2)
+    • General Stats: No. Connections to graph: 24 | Bans: 0
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 49 (Type: One+, MAC: 2)
+       • 48 → 49: weight 2
+       • 49 → 48: weight 1
+     ✓ Connected to Node 46 (Type: One+, MAC: 2)
+       • 48 → 46: weight 1
+       • 46 → 48: weight 1
+     ✓ Connected to Node 13 (Type: One+, MAC: 2)
+       • 48 → 13: weight 2
+       • 13 → 48: weight 3
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 3, Has 3 (✅ MEETS)
+🔹 NODE 49 (Type: One+, MAC: 2)
+    • General Stats: No. Connections to graph: 15 | Bans: 0
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 48 (Type: All, MAC: 2)
+       • 49 → 48: weight 1
+       • 48 → 49: weight 2
+     ✓ Connected to Node 46 (Type: One+, MAC: 2)
+       • 49 → 46: weight 2
+       • 46 → 49: weight 1
+     ✓ Connected to Node 13 (Type: One+, MAC: 2)
+       • 49 → 13: weight 2
+       • 13 → 49: weight 2
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 1, Has 3 (✅ MEETS)
+🔹 NODE 46 (Type: One+, MAC: 2)
+    • General Stats: No. Connections to graph: 16 | Bans: 16
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 48 (Type: All, MAC: 2)
+       • 46 → 48: weight 1
+       • 48 → 46: weight 1
+     ✓ Connected to Node 49 (Type: One+, MAC: 2)
+       • 46 → 49: weight 1
+       • 49 → 46: weight 2
+     ✓ Connected to Node 13 (Type: One+, MAC: 2)
+       • 46 → 13: weight 2
+       • 13 → 46: weight 1
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 1, Has 3 (✅ MEETS)
+🔹 NODE 13 (Type: One+, MAC: 2)
+    • General Stats: No. Connections to graph: 22 | Bans: 0
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 48 (Type: All, MAC: 2)
+       • 13 → 48: weight 3
+       • 48 → 13: weight 2
+     ✓ Connected to Node 49 (Type: One+, MAC: 2)
+       • 13 → 49: weight 2
+       • 49 → 13: weight 2
+     ✓ Connected to Node 46 (Type: One+, MAC: 2)
+       • 13 → 46: weight 1
+       • 46 → 13: weight 2
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 1, Has 3 (✅ MEETS)
+============================================================
+📊 DETAILED ANALYSIS FOR GROUP 5: [35, 18, 32, 45]
+🔗 Connectivity Score (sum of all edge weights in group): 17
+============================================================
+🔹 NODE 35 (Type: All, MAC: 2)
+    • General Stats: No. Connections to graph: 9 | Bans: 0
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 18 (Type: One+, MAC: 2)
+       • 35 → 18: weight 2
+       • 18 → 35: weight 2
+     ✓ Connected to Node 32 (Type: Half+, MAC: 2)
+       • 35 → 32: weight 1
+       • 32 → 35: weight 1
+     ✓ Connected to Node 45 (Type: One+, MAC: 2)
+       • 35 → 45: weight 1
+       • 45 → 35: weight 1
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 3, Has 3 (✅ MEETS)
+🔹 NODE 18 (Type: One+, MAC: 2)
+    • General Stats: No. Connections to graph: 15 | Bans: 1
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 35 (Type: All, MAC: 2)
+       • 18 → 35: weight 2
+       • 35 → 18: weight 2
+     ✓ Connected to Node 32 (Type: Half+, MAC: 2)
+       • 18 → 32: weight 3
+       • 32 → 18: weight 1
+     ❌ NOT connected to:
+       • Node 45 (Type: One+, MAC: 2)
+     📈 Connection Stats: 2/3 (66.7%)
+     🎯 Type Requirement: Needs 1, Has 2 (✅ MEETS)
+🔹 NODE 32 (Type: Half+, MAC: 2)
+    • General Stats: No. Connections to graph: 14 | Bans: 0
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 35 (Type: All, MAC: 2)
+       • 32 → 35: weight 1
+       • 35 → 32: weight 1
+     ✓ Connected to Node 18 (Type: One+, MAC: 2)
+       • 32 → 18: weight 1
+       • 18 → 32: weight 3
+     ✓ Connected to Node 45 (Type: One+, MAC: 2)
+       • 32 → 45: weight 2
+       • 45 → 32: weight 3
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 2, Has 3 (✅ MEETS)
+🔹 NODE 45 (Type: One+, MAC: 2)
+    • General Stats: No. Connections to graph: 13 | Bans: 29
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 35 (Type: All, MAC: 2)
+       • 45 → 35: weight 1
+       • 35 → 45: weight 1
+     ✓ Connected to Node 32 (Type: Half+, MAC: 2)
+       • 45 → 32: weight 3
+       • 32 → 45: weight 2
+     ❌ NOT connected to:
+       • Node 18 (Type: One+, MAC: 2)
+     📈 Connection Stats: 2/3 (66.7%)
+     🎯 Type Requirement: Needs 1, Has 2 (✅ MEETS)
+============================================================
+📊 DETAILED ANALYSIS FOR GROUP 6: [22, 42, 13, 12]
+🔗 Connectivity Score (sum of all edge weights in group): 21
+============================================================
+🔹 NODE 22 (Type: All, MAC: 2)
+    • General Stats: No. Connections to graph: 15 | Bans: 11
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 42 (Type: Half+, MAC: 2)
+       • 22 → 42: weight 2
+       • 42 → 22: weight 1
+     ✓ Connected to Node 13 (Type: One+, MAC: 2)
+       • 22 → 13: weight 1
+       • 13 → 22: weight 2
+     ✓ Connected to Node 12 (Type: One+, MAC: 2)
+       • 22 → 12: weight 1
+       • 12 → 22: weight 3
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 3, Has 3 (✅ MEETS)
+🔹 NODE 42 (Type: Half+, MAC: 2)
+    • General Stats: No. Connections to graph: 14 | Bans: 0
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 22 (Type: All, MAC: 2)
+       • 42 → 22: weight 1
+       • 22 → 42: weight 2
+     ✓ Connected to Node 13 (Type: One+, MAC: 2)
+       • 42 → 13: weight 3
+       • 13 → 42: weight 2
+     ✓ Connected to Node 12 (Type: One+, MAC: 2)
+       • 42 → 12: weight 1
+       • 12 → 42: weight 2
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 2, Has 3 (✅ MEETS)
+🔹 NODE 13 (Type: One+, MAC: 2)
+    • General Stats: No. Connections to graph: 22 | Bans: 0
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 22 (Type: All, MAC: 2)
+       • 13 → 22: weight 2
+       • 22 → 13: weight 1
+     ✓ Connected to Node 42 (Type: Half+, MAC: 2)
+       • 13 → 42: weight 2
+       • 42 → 13: weight 3
+     ✓ Connected to Node 12 (Type: One+, MAC: 2)
+       • 13 → 12: weight 2
+       • 12 → 13: weight 1
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 1, Has 3 (✅ MEETS)
+🔹 NODE 12 (Type: One+, MAC: 2)
+    • General Stats: No. Connections to graph: 22 | Bans: 1
+    --------------------------------------------------------
+    • Connections to other group members:
+     ✓ Connected to Node 22 (Type: All, MAC: 2)
+       • 12 → 22: weight 3
+       • 22 → 12: weight 1
+     ✓ Connected to Node 42 (Type: Half+, MAC: 2)
+       • 12 → 42: weight 2
+       • 42 → 12: weight 1
+     ✓ Connected to Node 13 (Type: One+, MAC: 2)
+       • 12 → 13: weight 1
+       • 13 → 12: weight 2
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 1, Has 3 (✅ MEETS)
+📊 FAILURE REASONS ANALYSIS
+Total failures detected: 66
+Failure breakdown:
+  ID 3: 19 occurrences (28.8%) - Mutual positive IRL ratings required
+  ID 4: 6 occurrences (9.1%) - Type requirements not met
+  ID 5: 4 occurrences (6.1%) - Path not feasible
+  ID 6: 37 occurrences (56.1%) - No valid MAC picks
+📈 Failure analysis chart saved to: outputs/algo_analysis/failure_reasons_analysis.png

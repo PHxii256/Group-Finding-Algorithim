@@ -352,7 +352,10 @@ def generate_node_data(graph, seed=42):
         graph.nodes[node]["waiting_since"] = datetime.now() - timedelta(days=random.randint(0, 30), hours=random.randint(0, 23), minutes=random.randint(0, 59))
         graph.nodes[node]["available"] = is_node_available(availability_prob=0.8)  
         graph.nodes[node]["mac"] = min_affinity_constraint_probabilities
-        graph.nodes[node]["groupIDs"] = random.sample(range(1, 10), random.randint(0, 5))  # Up to 5 arbitrary group IDs
+        graph.nodes[node]["irl_rated_nodes"] = {}  # Node ID : Rating (-2 to 2) inclusive
+        graph.nodes[node]["groupIDs"] = []
+        # Testing Only (The resulting groupIDs are unrealistic)
+        #graph.nodes[node]["groupIDs"] = random.sample(range(1, 10), random.randint(0, 5))  # Up to 5 arbitrary group IDs
         graph.nodes[node]["bans"] = generate_random_bans(graph, node, ban_ranges)
         graph.nodes[node]["type"] = random.choice(types)
 
@@ -492,6 +495,8 @@ def plot_degree_distribution(my_graph):
     # Get the degrees of all nodes
     degrees = [d for n, d in my_graph.degree()]
 
+    # Ensure output directory exists
+    os.makedirs("outputs/generation_analysis", exist_ok=True)
     # Create a histogram of the degree distribution
     plt.figure(figsize=(10, 6))
     plt.hist(degrees, bins=np.arange(min(degrees), max(degrees) + 1, 1), density=True, alpha=0.6, color='skyblue', label='Degree Distribution')
@@ -521,13 +526,15 @@ def plot_degree_distribution(my_graph):
     plt.grid(True)
 
     # Save the plot as an image file
-    plt.savefig("outputs/degree_distribution.png")
+    plt.savefig("outputs/generation_analysis/degree_distribution.png")
     plt.close()
 
 def plot_ban_distribution(my_graph):
     # Get the number of bans for all nodes
     ban_counts = [len(my_graph.nodes[node]["bans"]) for node in my_graph.nodes()]
 
+    # Ensure output directory exists
+    os.makedirs("outputs/generation_analysis", exist_ok=True)
     # Create a histogram of the ban distribution
     plt.figure(figsize=(10, 6))
     plt.hist(ban_counts, bins=np.arange(min(ban_counts), max(ban_counts) + 1, 1), density=True, alpha=0.6, color='red', label='Ban Distribution')
@@ -557,11 +564,13 @@ def plot_ban_distribution(my_graph):
     plt.grid(True)
 
     # Save the plot as an image file
-    plt.savefig("outputs/ban_distribution.png")
+    plt.savefig("outputs/generation_analysis/ban_distribution.png")
     plt.close()
 
 # Visualize the graph
 def visualize_graph(my_graph):
+    # Ensure output directory exists
+    os.makedirs("outputs/generation_analysis", exist_ok=True)
     plt.figure(figsize=(12, 8))
     
     # Create a temporary graph without edge attributes for layout calculation
@@ -599,22 +608,23 @@ def visualize_graph(my_graph):
     plt.axis('off')  # Turn off axis for cleaner look
 
     # Save the plot as an image file
-    plt.savefig("outputs/graph_visualization.png", dpi=300, bbox_inches='tight')
+    plt.savefig("outputs/generation_analysis/graph_visualization.png", dpi=300, bbox_inches='tight')
     plt.close()
 
 
 # --- Example Usage ---
 
-def generate_graph():
+def generate_graph(graph_size=50, seed=42, st_dev=10):
     """
     Generates a graph with a specified size, random seed, degree ranges, and edge weight probabilities.
     Returns:
         A networkx.Graph object if the graph is generated successfully, otherwise None.
     """
+
     # Define parameters for the graph generation
-    GRAPH_SIZE = 50
-    RANDOM_SEED = 43
-    DEFAULT_STDEV = 10
+    GRAPH_SIZE = graph_size
+    RANDOM_SEED = seed
+    DEFAULT_STDEV = st_dev
     DEGREE_RANGES = [
         {'start': 0, 'end': 1, 'prob': 0.25},
         {'start': GRAPH_SIZE - 2, 'end': GRAPH_SIZE - 1, 'prob': 0.1},
