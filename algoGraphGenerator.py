@@ -613,7 +613,7 @@ def generate_graph():
     """
     # Define parameters for the graph generation
     GRAPH_SIZE = 50
-    RANDOM_SEED = 42
+    RANDOM_SEED = 43
     DEFAULT_STDEV = 10
     DEGREE_RANGES = [
         {'start': 0, 'end': 1, 'prob': 0.25},

@@ -1,0 +1,1479 @@
+Starting group finding algorithm - Log file: group_finding_output_log.txt
+MAC Check Mode: Relaxed
+Removed 13 unavailable nodes out of 50.
+>>> Starting DFS from seed node: 24
+=== Starting DFS with seed node: 24 ===
+--- Loop 1 ---
+POPPED: node=24, path=[], remaining_picks=[]
+Exploring node 24, new path: [24]
+Node 24 of type All that needs 3 has 3 r_conns with path: [24].
+Valid MAC picks for 24: [25, 44, 16, 48]
+Best pick: 25, sum of weights with path: 3, remaining: [44, 16, 48]
+Added backtrack option: node=24, remaining_picks=[44, 16, 48]
+Exploring best pick: 25 with path: [24]
+Stack state: [(24, [], [44, 16, 48]), (25, [24], [])]
+--- Loop 2 ---
+POPPED: node=25, path=[24], remaining_picks=[]
+Exploring node 25, new path: [24, 25]
+Node 24 of type All that needs 3 has 2 r_conns with path: [24, 25].
+Node 25 of type All that needs 3 has 2 r_conns with path: [24, 25].
+❌ group constraint violated for node 43 in path [24, 25, 43]. Violating group_id: 4, nodes: [25, 43]
+❌ group constraint violated for node 17 in path [24, 25, 17]. Violating group_id: 4, nodes: [25, 17]
+❌ group constraint violated for node 49 in path [24, 25, 49]. Violating group_id: 4, nodes: [25, 49]
+Valid MAC picks for 25: [2, 29]
+Best pick: 2, sum of weights with path: 4, remaining: [29]
+Added backtrack option: node=25, remaining_picks=[29]
+Exploring best pick: 2 with path: [24, 25]
+Stack state: [(24, [], [44, 16, 48]), (25, [24], [29]), (2, [24, 25], [])]
+--- Loop 3 ---
+POPPED: node=2, path=[24, 25], remaining_picks=[]
+Exploring node 2, new path: [24, 25, 2]
+Node 24 of type All that needs 3 has 2 r_conns with path: [24, 25, 2].
+Path [24, 25, 2] is not feasible, backtracking...
+--- Loop 4 ---
+POPPED: node=25, path=[24], remaining_picks=[29]
+Trying next pick from current level: 29
+--- Loop 5 ---
+POPPED: node=29, path=[24, 25], remaining_picks=[]
+Exploring node 29, new path: [24, 25, 29]
+Node 24 of type All that needs 3 has 2 r_conns with path: [24, 25, 29].
+Path [24, 25, 29] is not feasible, backtracking...
+--- Loop 6 ---
+POPPED: node=25, path=[24], remaining_picks=[]
+Node 25 already visited, backtracking...
+--- Loop 7 ---
+POPPED: node=24, path=[], remaining_picks=[44, 16, 48]
+Trying next pick from current level: 44
+--- Loop 8 ---
+POPPED: node=44, path=[24], remaining_picks=[]
+Exploring node 44, new path: [24, 44]
+Node 24 of type All that needs 3 has 2 r_conns with path: [24, 44].
+Node 44 of type Half+ that needs 2 has 1 r_conns with path: [24, 44].
+Node 44 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 40 in path [24, 44, 40]. Violating group_id: 8, nodes: [44, 40]
+❌ group constraint violated for node 15 in path [24, 44, 15]. Violating group_id: 8, nodes: [44, 15]
+❌ group constraint violated for node 18 in path [24, 44, 18]. Violating group_id: 8, nodes: [44, 18]
+Valid path picks for [24, 44]: [46, 48, 23, 39]
+Best pick: 46, sum of weights with path: 4, remaining: [48, 23, 39]
+Added backtrack option: node=44, remaining_picks=[48, 23, 39]
+Exploring best pick: 46 with path: [24, 44]
+Stack state: [(24, [], [16, 48]), (44, [24], [48, 23, 39]), (46, [24, 44], [])]
+--- Loop 9 ---
+POPPED: node=46, path=[24, 44], remaining_picks=[]
+Exploring node 46, new path: [24, 44, 46]
+Node 24 of type All that needs 3 has 1 r_conns with path: [24, 44, 46].
+Node 44 of type Half+ that needs 2 has 0 r_conns with path: [24, 44, 46].
+Node 46 of type All that needs 3 has 1 r_conns with path: [24, 44, 46].
+❌ group constraint violated for node 15 in path [24, 44, 46, 15]. Violating group_id: 8, nodes: [44, 15]
+❌ group constraint violated for node 49 in path [24, 44, 46, 49]. Violating group_id: 4, nodes: [46, 49]
+Valid MAC picks for 46: [39]
+Best pick: 39, sum of weights with path: 12, remaining: []
+Exploring best pick: 39 with path: [24, 44, 46]
+Stack state: [(24, [], [16, 48]), (44, [24], [48, 23, 39]), (39, [24, 44, 46], [])]
+--- Loop 10 ---
+POPPED: node=39, path=[24, 44, 46], remaining_picks=[]
+Exploring node 39, new path: [24, 44, 46, 39]
+  Validating Type requirements for group: [24, 44, 46, 39]
+   ✅ Node 24 (Type: All) needs 3 connections and has 3
+   ✅ Node 44 (Type: Half+) needs 2 connections and has 3
+   ✅ Node 46 (Type: All) needs 3 connections and has 3
+   ✅ Node 39 (Type: Half+) needs 2 connections and has 3
+  Validating MAC requirements for group: [24, 44, 46, 39]
+   ✅ Node 24 (MAC: 2), 2 >= 1 (relaxed mode)
+   ✅ Node 44 (MAC: 2), 2 >= 1 (relaxed mode)
+   ✅ Node 46 (MAC: 2), 2 >= 1 (relaxed mode)
+   ✅ Node 39 (MAC: 2), 2 >= 1 (relaxed mode)
+🎉 FOUND COMPLETE GROUP: [24, 44, 46, 39]
+✅ Group Created (ID 673)
+Assigned group ID 673 to group: [24, 44, 46, 39]
+Remaining seeds: [47, 14, 29, 43, 17, 12, 11, 48, 18, 8, 46, 28, 25, 44, 36, 6, 30, 3, 38, 10, 9, 42, 16, 34, 49, 7, 15, 2, 22, 31, 23, 40, 41, 1, 0, 39]
+>>> Starting DFS from seed node: 47
+=== Starting DFS with seed node: 47 ===
+--- Loop 1 ---
+POPPED: node=47, path=[], remaining_picks=[]
+Exploring node 47, new path: [47]
+Node 47 of type One+ that needs 1 has 1 r_conns with path: [47].
+Valid MAC picks for 47: []
+No valid picks for 47, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 47
+>>> Starting DFS from seed node: 14
+=== Starting DFS with seed node: 14 ===
+--- Loop 1 ---
+POPPED: node=14, path=[], remaining_picks=[]
+Exploring node 14, new path: [14]
+Node 14 of type One+ that needs 1 has 1 r_conns with path: [14].
+Valid MAC picks for 14: []
+No valid picks for 14, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 14
+>>> Starting DFS from seed node: 29
+=== Starting DFS with seed node: 29 ===
+--- Loop 1 ---
+POPPED: node=29, path=[], remaining_picks=[]
+Exploring node 29, new path: [29]
+Node 29 of type All that needs 3 has 3 r_conns with path: [29].
+❌ group constraint violated for node 40 in path [29, 40]. Violating group_id: 9, nodes: [29, 40]
+❌ group constraint violated for node 15 in path [29, 15]. Violating group_id: 1, nodes: [29, 15]
+Valid MAC picks for 29: [46, 44, 48, 25, 34]
+Best pick: 46, sum of weights with path: 3, remaining: [44, 48, 25, 34]
+Added backtrack option: node=29, remaining_picks=[44, 48, 25, 34]
+Exploring best pick: 46 with path: [29]
+Stack state: [(29, [], [44, 48, 25, 34]), (46, [29], [])]
+--- Loop 2 ---
+POPPED: node=46, path=[29], remaining_picks=[]
+Exploring node 46, new path: [29, 46]
+Node 29 of type All that needs 3 has 2 r_conns with path: [29, 46].
+Node 46 of type All that needs 3 has 2 r_conns with path: [29, 46].
+❌ group constraint violated for node 39 in path [29, 46, 39]. Violating group_id: 9, nodes: [29, 39]
+❌ group constraint violated for node 42 in path [29, 46, 42]. Violating group_id: 1, nodes: [29, 42]
+❌ group constraint violated for node 15 in path [29, 46, 15]. Violating group_id: 4, nodes: [46, 15]
+❌ group constraint violated for node 49 in path [29, 46, 49]. Violating group_id: 1, nodes: [29, 49]
+Valid MAC picks for 46: []
+No valid picks for 46, backtracking...
+Stack state: [(29, [], [44, 48, 25, 34])]
+--- Loop 3 ---
+POPPED: node=29, path=[], remaining_picks=[44, 48, 25, 34]
+Trying next pick from current level: 44
+--- Loop 4 ---
+POPPED: node=44, path=[29], remaining_picks=[]
+Exploring node 44, new path: [29, 44]
+Node 29 of type All that needs 3 has 2 r_conns with path: [29, 44].
+Node 44 of type Half+ that needs 2 has 1 r_conns with path: [29, 44].
+❌ group constraint violated for node 14 in path [29, 44, 14]. Violating group_id: 9, nodes: [29, 14]
+Valid MAC picks for 44: []
+No valid picks for 44, backtracking...
+Stack state: [(29, [], [48, 25, 34])]
+--- Loop 5 ---
+POPPED: node=29, path=[], remaining_picks=[48, 25, 34]
+Trying next pick from current level: 48
+--- Loop 6 ---
+POPPED: node=48, path=[29], remaining_picks=[]
+Exploring node 48, new path: [29, 48]
+Node 29 of type All that needs 3 has 2 r_conns with path: [29, 48].
+Node 48 of type All that needs 3 has 2 r_conns with path: [29, 48].
+Node 48 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 12 in path [29, 48, 12]. Violating group_id: 9, nodes: [29, 12]
+❌ group constraint violated for node 14 in path [29, 48, 14]. Violating group_id: 9, nodes: [29, 14]
+❌ group constraint violated for node 15 in path [29, 48, 15]. Violating group_id: 6, nodes: [48, 15]
+❌ group constraint violated for node 16 in path [29, 48, 16]. Violating group_id: 1, nodes: [29, 16]
+❌ group constraint violated for node 18 in path [29, 48, 18]. Violating group_id: 7, nodes: [48, 18]
+❌ group constraint violated for node 25 in path [29, 48, 25]. Violating group_id: 5, nodes: [48, 25]
+❌ group constraint violated for node 28 in path [29, 48, 28]. Violating group_id: 6, nodes: [48, 28]
+❌ group constraint violated for node 34 in path [29, 48, 34]. Violating group_id: 5, nodes: [48, 34]
+❌ group constraint violated for node 36 in path [29, 48, 36]. Violating group_id: 9, nodes: [29, 36]
+❌ group constraint violated for node 38 in path [29, 48, 38]. Violating group_id: 7, nodes: [48, 38]
+❌ group constraint violated for node 40 in path [29, 48, 40]. Violating group_id: 6, nodes: [48, 40]
+❌ group constraint violated for node 41 in path [29, 48, 41]. Violating group_id: 9, nodes: [29, 41]
+❌ group constraint violated for node 49 in path [29, 48, 49]. Violating group_id: 7, nodes: [48, 49]
+Valid path picks for [29, 48]: [17, 22, 23, 31, 24, 43, 44, 46]
+Best pick: 17, sum of weights with path: 2, remaining: [22, 23, 31, 24, 43, 44, 46]
+Added backtrack option: node=48, remaining_picks=[22, 23, 31, 24, 43, 44, 46]
+Exploring best pick: 17 with path: [29, 48]
+Stack state: [(29, [], [25, 34]), (48, [29], [22, 23, 31, 24, 43, 44, 46]), (17, [29, 48], [])]
+--- Loop 7 ---
+POPPED: node=17, path=[29, 48], remaining_picks=[]
+Exploring node 17, new path: [29, 48, 17]
+Node 29 of type All that needs 3 has 1 r_conns with path: [29, 48, 17].
+Node 48 of type All that needs 3 has 2 r_conns with path: [29, 48, 17].
+Path [29, 48, 17] is not feasible, backtracking...
+--- Loop 8 ---
+POPPED: node=48, path=[29], remaining_picks=[22, 23, 31, 24, 43, 44, 46]
+Trying next pick from current level: 22
+--- Loop 9 ---
+POPPED: node=22, path=[29, 48], remaining_picks=[]
+Exploring node 22, new path: [29, 48, 22]
+Node 29 of type All that needs 3 has 2 r_conns with path: [29, 48, 22].
+Path [29, 48, 22] is not feasible, backtracking...
+--- Loop 10 ---
+POPPED: node=48, path=[29], remaining_picks=[23, 31, 24, 43, 44, 46]
+Trying next pick from current level: 23
+--- Loop 11 ---
+POPPED: node=23, path=[29, 48], remaining_picks=[]
+Exploring node 23, new path: [29, 48, 23]
+Node 29 of type All that needs 3 has 2 r_conns with path: [29, 48, 23].
+Path [29, 48, 23] is not feasible, backtracking...
+--- Loop 12 ---
+POPPED: node=48, path=[29], remaining_picks=[31, 24, 43, 44, 46]
+Trying next pick from current level: 31
+--- Loop 13 ---
+POPPED: node=31, path=[29, 48], remaining_picks=[]
+Exploring node 31, new path: [29, 48, 31]
+Node 29 of type All that needs 3 has 2 r_conns with path: [29, 48, 31].
+Path [29, 48, 31] is not feasible, backtracking...
+--- Loop 14 ---
+POPPED: node=48, path=[29], remaining_picks=[24, 43, 44, 46]
+Trying next pick from current level: 24
+--- Loop 15 ---
+POPPED: node=24, path=[29, 48], remaining_picks=[]
+Exploring node 24, new path: [29, 48, 24]
+Node 29 of type All that needs 3 has 2 r_conns with path: [29, 48, 24].
+Path [29, 48, 24] is not feasible, backtracking...
+--- Loop 16 ---
+POPPED: node=48, path=[29], remaining_picks=[43, 44, 46]
+Trying next pick from current level: 43
+--- Loop 17 ---
+POPPED: node=43, path=[29, 48], remaining_picks=[]
+Exploring node 43, new path: [29, 48, 43]
+Node 29 of type All that needs 3 has 2 r_conns with path: [29, 48, 43].
+Path [29, 48, 43] is not feasible, backtracking...
+--- Loop 18 ---
+POPPED: node=48, path=[29], remaining_picks=[44, 46]
+Trying next pick from current level: 44
+--- Loop 19 ---
+POPPED: node=44, path=[29, 48], remaining_picks=[]
+Node 44 already visited, backtracking...
+--- Loop 20 ---
+POPPED: node=48, path=[29], remaining_picks=[46]
+Trying next pick from current level: 46
+--- Loop 21 ---
+POPPED: node=46, path=[29, 48], remaining_picks=[]
+Node 46 already visited, backtracking...
+--- Loop 22 ---
+POPPED: node=48, path=[29], remaining_picks=[]
+Node 48 already visited, backtracking...
+--- Loop 23 ---
+POPPED: node=29, path=[], remaining_picks=[25, 34]
+Trying next pick from current level: 25
+--- Loop 24 ---
+POPPED: node=25, path=[29], remaining_picks=[]
+Exploring node 25, new path: [29, 25]
+Node 29 of type All that needs 3 has 2 r_conns with path: [29, 25].
+Node 25 of type All that needs 3 has 2 r_conns with path: [29, 25].
+Node 25 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 34 in path [29, 25, 34]. Violating group_id: 5, nodes: [25, 34]
+❌ group constraint violated for node 40 in path [29, 25, 40]. Violating group_id: 5, nodes: [25, 40]
+❌ group constraint violated for node 41 in path [29, 25, 41]. Violating group_id: 4, nodes: [25, 41]
+❌ group constraint violated for node 43 in path [29, 25, 43]. Violating group_id: 4, nodes: [25, 43]
+❌ group constraint violated for node 12 in path [29, 25, 12]. Violating group_id: 9, nodes: [29, 12]
+❌ group constraint violated for node 14 in path [29, 25, 14]. Violating group_id: 9, nodes: [29, 14]
+❌ group constraint violated for node 15 in path [29, 25, 15]. Violating group_id: 5, nodes: [25, 15]
+❌ group constraint violated for node 46 in path [29, 25, 46]. Violating group_id: 4, nodes: [25, 46]
+❌ group constraint violated for node 17 in path [29, 25, 17]. Violating group_id: 4, nodes: [25, 17]
+❌ group constraint violated for node 18 in path [29, 25, 18]. Violating group_id: 4, nodes: [25, 18]
+❌ group constraint violated for node 48 in path [29, 25, 48]. Violating group_id: 5, nodes: [25, 48]
+❌ group constraint violated for node 16 in path [29, 25, 16]. Violating group_id: 4, nodes: [25, 16]
+❌ group constraint violated for node 49 in path [29, 25, 49]. Violating group_id: 1, nodes: [29, 49]
+Valid path picks for [29, 25]: [24, 2, 44]
+Best pick: 24, sum of weights with path: 3, remaining: [2, 44]
+Added backtrack option: node=25, remaining_picks=[2, 44]
+Exploring best pick: 24 with path: [29, 25]
+Stack state: [(29, [], [34]), (25, [29], [2, 44]), (24, [29, 25], [])]
+--- Loop 25 ---
+POPPED: node=24, path=[29, 25], remaining_picks=[]
+Node 24 already visited, backtracking...
+--- Loop 26 ---
+POPPED: node=25, path=[29], remaining_picks=[2, 44]
+Trying next pick from current level: 2
+--- Loop 27 ---
+POPPED: node=2, path=[29, 25], remaining_picks=[]
+Exploring node 2, new path: [29, 25, 2]
+Node 29 of type All that needs 3 has 2 r_conns with path: [29, 25, 2].
+Path [29, 25, 2] is not feasible, backtracking...
+--- Loop 28 ---
+POPPED: node=25, path=[29], remaining_picks=[44]
+Trying next pick from current level: 44
+--- Loop 29 ---
+POPPED: node=44, path=[29, 25], remaining_picks=[]
+Node 44 already visited, backtracking...
+--- Loop 30 ---
+POPPED: node=25, path=[29], remaining_picks=[]
+Node 25 already visited, backtracking...
+--- Loop 31 ---
+POPPED: node=29, path=[], remaining_picks=[34]
+Trying next pick from current level: 34
+--- Loop 32 ---
+POPPED: node=34, path=[29], remaining_picks=[]
+Exploring node 34, new path: [29, 34]
+Node 29 of type All that needs 3 has 2 r_conns with path: [29, 34].
+Node 34 of type One+ that needs 1 has 0 r_conns with path: [29, 34].
+Node 34 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 40 in path [29, 34, 40]. Violating group_id: 6, nodes: [34, 40]
+❌ group constraint violated for node 41 in path [29, 34, 41]. Violating group_id: 4, nodes: [34, 41]
+❌ group constraint violated for node 14 in path [29, 34, 14]. Violating group_id: 2, nodes: [34, 14]
+❌ group constraint violated for node 15 in path [29, 34, 15]. Violating group_id: 6, nodes: [34, 15]
+❌ group constraint violated for node 46 in path [29, 34, 46]. Violating group_id: 4, nodes: [34, 46]
+❌ group constraint violated for node 17 in path [29, 34, 17]. Violating group_id: 4, nodes: [34, 17]
+❌ group constraint violated for node 18 in path [29, 34, 18]. Violating group_id: 6, nodes: [34, 18]
+❌ group constraint violated for node 48 in path [29, 34, 48]. Violating group_id: 5, nodes: [34, 48]
+❌ group constraint violated for node 25 in path [29, 34, 25]. Violating group_id: 3, nodes: [34, 25]
+Valid path picks for [29, 34]: [44]
+Best pick: 44, sum of weights with path: 8, remaining: []
+Exploring best pick: 44 with path: [29, 34]
+Stack state: [(29, [], []), (44, [29, 34], [])]
+--- Loop 33 ---
+POPPED: node=44, path=[29, 34], remaining_picks=[]
+Node 44 already visited, backtracking...
+--- Loop 34 ---
+POPPED: node=29, path=[], remaining_picks=[]
+Node 29 already visited, backtracking...
+DFS complete in 34 iterations. No complete group found.
+❌ No group found starting from 29
+>>> Starting DFS from seed node: 43
+=== Starting DFS with seed node: 43 ===
+--- Loop 1 ---
+POPPED: node=43, path=[], remaining_picks=[]
+Exploring node 43, new path: [43]
+Node 43 of type Half+ that needs 2 has 2 r_conns with path: [43].
+Valid MAC picks for 43: []
+No valid picks for 43, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 43
+>>> Starting DFS from seed node: 17
+=== Starting DFS with seed node: 17 ===
+--- Loop 1 ---
+POPPED: node=17, path=[], remaining_picks=[]
+Exploring node 17, new path: [17]
+Node 17 of type Half+ that needs 2 has 2 r_conns with path: [17].
+Valid MAC picks for 17: []
+No valid picks for 17, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 17
+>>> Starting DFS from seed node: 12
+=== Starting DFS with seed node: 12 ===
+--- Loop 1 ---
+POPPED: node=12, path=[], remaining_picks=[]
+Exploring node 12, new path: [12]
+Node 12 of type Half+ that needs 2 has 2 r_conns with path: [12].
+Valid MAC picks for 12: []
+No valid picks for 12, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 12
+>>> Starting DFS from seed node: 11
+=== Starting DFS with seed node: 11 ===
+--- Loop 1 ---
+POPPED: node=11, path=[], remaining_picks=[]
+Exploring node 11, new path: [11]
+Node 11 of type One+ that needs 1 has 1 r_conns with path: [11].
+Valid MAC picks for 11: []
+No valid picks for 11, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 11
+>>> Starting DFS from seed node: 48
+=== Starting DFS with seed node: 48 ===
+--- Loop 1 ---
+POPPED: node=48, path=[], remaining_picks=[]
+Exploring node 48, new path: [48]
+Node 48 of type All that needs 3 has 3 r_conns with path: [48].
+❌ group constraint violated for node 14 in path [48, 14]. Violating group_id: 6, nodes: [48, 14]
+❌ group constraint violated for node 15 in path [48, 15]. Violating group_id: 6, nodes: [48, 15]
+❌ group constraint violated for node 16 in path [48, 16]. Violating group_id: 6, nodes: [48, 16]
+❌ group constraint violated for node 18 in path [48, 18]. Violating group_id: 7, nodes: [48, 18]
+❌ group constraint violated for node 28 in path [48, 28]. Violating group_id: 6, nodes: [48, 28]
+❌ group constraint violated for node 38 in path [48, 38]. Violating group_id: 7, nodes: [48, 38]
+❌ group constraint violated for node 49 in path [48, 49]. Violating group_id: 7, nodes: [48, 49]
+Valid MAC picks for 48: [44, 23, 29, 46, 24, 43]
+Best pick: 44, sum of weights with path: 3, remaining: [23, 29, 46, 24, 43]
+Added backtrack option: node=48, remaining_picks=[23, 29, 46, 24, 43]
+Exploring best pick: 44 with path: [48]
+Stack state: [(48, [], [23, 29, 46, 24, 43]), (44, [48], [])]
+--- Loop 2 ---
+POPPED: node=44, path=[48], remaining_picks=[]
+Exploring node 44, new path: [48, 44]
+Node 48 of type All that needs 3 has 2 r_conns with path: [48, 44].
+Node 44 of type Half+ that needs 2 has 1 r_conns with path: [48, 44].
+❌ group constraint violated for node 36 in path [48, 44, 36]. Violating group_id: 5, nodes: [48, 36]
+❌ group constraint violated for node 12 in path [48, 44, 12]. Violating group_id: 5, nodes: [48, 12]
+❌ group constraint violated for node 14 in path [48, 44, 14]. Violating group_id: 6, nodes: [48, 14]
+❌ group constraint violated for node 24 in path [48, 44, 24]. Violating group_id: 673, nodes: [44, 24]
+Valid MAC picks for 44: [23]
+Best pick: 23, sum of weights with path: 8, remaining: []
+Exploring best pick: 23 with path: [48, 44]
+Stack state: [(48, [], [23, 29, 46, 24, 43]), (23, [48, 44], [])]
+--- Loop 3 ---
+POPPED: node=23, path=[48, 44], remaining_picks=[]
+Exploring node 23, new path: [48, 44, 23]
+Node 48 of type All that needs 3 has 1 r_conns with path: [48, 44, 23].
+Node 44 of type Half+ that needs 2 has 0 r_conns with path: [48, 44, 23].
+Node 23 of type All that needs 3 has 1 r_conns with path: [48, 44, 23].
+Node 23 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 12 in path [48, 44, 23, 12]. Violating group_id: 5, nodes: [48, 12]
+❌ group constraint violated for node 14 in path [48, 44, 23, 14]. Violating group_id: 2, nodes: [23, 14]
+❌ group constraint violated for node 15 in path [48, 44, 23, 15]. Violating group_id: 6, nodes: [48, 15]
+❌ group constraint violated for node 18 in path [48, 44, 23, 18]. Violating group_id: 7, nodes: [48, 18]
+❌ group constraint violated for node 24 in path [48, 44, 23, 24]. Violating group_id: 673, nodes: [44, 24]
+❌ group constraint violated for node 34 in path [48, 44, 23, 34]. Violating group_id: 5, nodes: [48, 34]
+❌ group constraint violated for node 36 in path [48, 44, 23, 36]. Violating group_id: 2, nodes: [23, 36]
+❌ group constraint violated for node 38 in path [48, 44, 23, 38]. Violating group_id: 7, nodes: [48, 38]
+❌ group constraint violated for node 39 in path [48, 44, 23, 39]. Violating group_id: 673, nodes: [44, 39]
+❌ group constraint violated for node 43 in path [48, 44, 23, 43]. Violating group_id: 8, nodes: [44, 43]
+❌ group constraint violated for node 46 in path [48, 44, 23, 46]. Violating group_id: 673, nodes: [44, 46]
+❌ group constraint violated for node 49 in path [48, 44, 23, 49]. Violating group_id: 7, nodes: [48, 49]
+Valid path picks for [48, 44, 23]: [31, 29]
+Best pick: 31, sum of weights with path: 4, remaining: [29]
+Added backtrack option: node=23, remaining_picks=[29]
+Exploring best pick: 31 with path: [48, 44, 23]
+Stack state: [(48, [], [23, 29, 46, 24, 43]), (23, [48, 44], [29]), (31, [48, 44, 23], [])]
+--- Loop 4 ---
+POPPED: node=31, path=[48, 44, 23], remaining_picks=[]
+Exploring node 31, new path: [48, 44, 23, 31]
+  Validating Type requirements for group: [48, 44, 23, 31]
+   ✅ Node 48 (Type: All) needs 3 connections and has 3
+   ✅ Node 44 (Type: Half+) needs 2 connections and has 2
+   ❌ Node 23 (Type: All) needs 3 connections but only has 2
+❌ Group [48, 44, 23, 31] rejected - not all members meet type/MAC requirements
+--- Loop 5 ---
+POPPED: node=23, path=[48, 44], remaining_picks=[29]
+Trying next pick from current level: 29
+--- Loop 6 ---
+POPPED: node=29, path=[48, 44, 23], remaining_picks=[]
+Exploring node 29, new path: [48, 44, 23, 29]
+  Validating Type requirements for group: [48, 44, 23, 29]
+   ✅ Node 48 (Type: All) needs 3 connections and has 3
+   ✅ Node 44 (Type: Half+) needs 2 connections and has 3
+   ❌ Node 23 (Type: All) needs 3 connections but only has 2
+❌ Group [48, 44, 23, 29] rejected - not all members meet type/MAC requirements
+--- Loop 7 ---
+POPPED: node=23, path=[48, 44], remaining_picks=[]
+Node 23 already visited, backtracking...
+--- Loop 8 ---
+POPPED: node=48, path=[], remaining_picks=[23, 29, 46, 24, 43]
+Trying next pick from current level: 23
+--- Loop 9 ---
+POPPED: node=23, path=[48], remaining_picks=[]
+Node 23 already visited, backtracking...
+--- Loop 10 ---
+POPPED: node=48, path=[], remaining_picks=[29, 46, 24, 43]
+Trying next pick from current level: 29
+--- Loop 11 ---
+POPPED: node=29, path=[48], remaining_picks=[]
+Node 29 already visited, backtracking...
+--- Loop 12 ---
+POPPED: node=48, path=[], remaining_picks=[46, 24, 43]
+Trying next pick from current level: 46
+--- Loop 13 ---
+POPPED: node=46, path=[48], remaining_picks=[]
+Exploring node 46, new path: [48, 46]
+Node 48 of type All that needs 3 has 2 r_conns with path: [48, 46].
+Node 46 of type All that needs 3 has 2 r_conns with path: [48, 46].
+❌ group constraint violated for node 39 in path [48, 46, 39]. Violating group_id: 673, nodes: [46, 39]
+❌ group constraint violated for node 42 in path [48, 46, 42]. Violating group_id: 7, nodes: [48, 42]
+❌ group constraint violated for node 15 in path [48, 46, 15]. Violating group_id: 6, nodes: [48, 15]
+❌ group constraint violated for node 49 in path [48, 46, 49]. Violating group_id: 7, nodes: [48, 49]
+Valid MAC picks for 46: []
+No valid picks for 46, backtracking...
+Stack state: [(48, [], [24, 43])]
+--- Loop 14 ---
+POPPED: node=48, path=[], remaining_picks=[24, 43]
+Trying next pick from current level: 24
+--- Loop 15 ---
+POPPED: node=24, path=[48], remaining_picks=[]
+Exploring node 24, new path: [48, 24]
+Node 48 of type All that needs 3 has 2 r_conns with path: [48, 24].
+Node 24 of type All that needs 3 has 2 r_conns with path: [48, 24].
+Node 24 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 12 in path [48, 24, 12]. Violating group_id: 5, nodes: [48, 12]
+❌ group constraint violated for node 14 in path [48, 24, 14]. Violating group_id: 6, nodes: [48, 14]
+❌ group constraint violated for node 15 in path [48, 24, 15]. Violating group_id: 6, nodes: [48, 15]
+❌ group constraint violated for node 16 in path [48, 24, 16]. Violating group_id: 6, nodes: [48, 16]
+❌ group constraint violated for node 18 in path [48, 24, 18]. Violating group_id: 7, nodes: [48, 18]
+❌ group constraint violated for node 25 in path [48, 24, 25]. Violating group_id: 5, nodes: [48, 25]
+❌ group constraint violated for node 28 in path [48, 24, 28]. Violating group_id: 6, nodes: [48, 28]
+❌ group constraint violated for node 34 in path [48, 24, 34]. Violating group_id: 5, nodes: [48, 34]
+❌ group constraint violated for node 36 in path [48, 24, 36]. Violating group_id: 5, nodes: [48, 36]
+❌ group constraint violated for node 38 in path [48, 24, 38]. Violating group_id: 7, nodes: [48, 38]
+❌ group constraint violated for node 39 in path [48, 24, 39]. Violating group_id: 673, nodes: [24, 39]
+❌ group constraint violated for node 40 in path [48, 24, 40]. Violating group_id: 6, nodes: [48, 40]
+❌ group constraint violated for node 41 in path [48, 24, 41]. Violating group_id: 7, nodes: [48, 41]
+❌ group constraint violated for node 44 in path [48, 24, 44]. Violating group_id: 673, nodes: [24, 44]
+❌ group constraint violated for node 46 in path [48, 24, 46]. Violating group_id: 673, nodes: [24, 46]
+❌ group constraint violated for node 49 in path [48, 24, 49]. Violating group_id: 7, nodes: [48, 49]
+Valid path picks for [48, 24]: [29, 31, 43, 23]
+Best pick: 29, sum of weights with path: 4, remaining: [31, 43, 23]
+Added backtrack option: node=24, remaining_picks=[31, 43, 23]
+Exploring best pick: 29 with path: [48, 24]
+Stack state: [(48, [], [43]), (24, [48], [31, 43, 23]), (29, [48, 24], [])]
+--- Loop 16 ---
+POPPED: node=29, path=[48, 24], remaining_picks=[]
+Node 29 already visited, backtracking...
+--- Loop 17 ---
+POPPED: node=24, path=[48], remaining_picks=[31, 43, 23]
+Trying next pick from current level: 31
+--- Loop 18 ---
+POPPED: node=31, path=[48, 24], remaining_picks=[]
+Node 31 already visited, backtracking...
+--- Loop 19 ---
+POPPED: node=24, path=[48], remaining_picks=[43, 23]
+Trying next pick from current level: 43
+--- Loop 20 ---
+POPPED: node=43, path=[48, 24], remaining_picks=[]
+Exploring node 43, new path: [48, 24, 43]
+Node 48 of type All that needs 3 has 1 r_conns with path: [48, 24, 43].
+Node 24 of type All that needs 3 has 2 r_conns with path: [48, 24, 43].
+Path [48, 24, 43] is not feasible, backtracking...
+--- Loop 21 ---
+POPPED: node=24, path=[48], remaining_picks=[23]
+Trying next pick from current level: 23
+--- Loop 22 ---
+POPPED: node=23, path=[48, 24], remaining_picks=[]
+Node 23 already visited, backtracking...
+--- Loop 23 ---
+POPPED: node=24, path=[48], remaining_picks=[]
+Node 24 already visited, backtracking...
+--- Loop 24 ---
+POPPED: node=48, path=[], remaining_picks=[43]
+Trying next pick from current level: 43
+--- Loop 25 ---
+POPPED: node=43, path=[48], remaining_picks=[]
+Node 43 already visited, backtracking...
+--- Loop 26 ---
+POPPED: node=48, path=[], remaining_picks=[]
+Node 48 already visited, backtracking...
+DFS complete in 26 iterations. No complete group found.
+❌ No group found starting from 48
+>>> Starting DFS from seed node: 18
+=== Starting DFS with seed node: 18 ===
+--- Loop 1 ---
+POPPED: node=18, path=[], remaining_picks=[]
+Exploring node 18, new path: [18]
+Node 18 of type All that needs 3 has 3 r_conns with path: [18].
+❌ group constraint violated for node 39 in path [18, 39]. Violating group_id: 9, nodes: [18, 39]
+❌ group constraint violated for node 15 in path [18, 15]. Violating group_id: 6, nodes: [18, 15]
+❌ group constraint violated for node 16 in path [18, 16]. Violating group_id: 4, nodes: [18, 16]
+❌ group constraint violated for node 17 in path [18, 17]. Violating group_id: 8, nodes: [18, 17]
+❌ group constraint violated for node 28 in path [18, 28]. Violating group_id: 4, nodes: [18, 28]
+❌ group constraint violated for node 29 in path [18, 29]. Violating group_id: 9, nodes: [18, 29]
+Valid MAC picks for 18: []
+No valid picks for 18, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 18
+>>> Starting DFS from seed node: 8
+=== Starting DFS with seed node: 8 ===
+--- Loop 1 ---
+POPPED: node=8, path=[], remaining_picks=[]
+Exploring node 8, new path: [8]
+Node 8 of type Half+ that needs 2 has 2 r_conns with path: [8].
+Valid MAC picks for 8: []
+No valid picks for 8, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 8
+>>> Starting DFS from seed node: 46
+=== Starting DFS with seed node: 46 ===
+--- Loop 1 ---
+POPPED: node=46, path=[], remaining_picks=[]
+Exploring node 46, new path: [46]
+Node 46 of type All that needs 3 has 3 r_conns with path: [46].
+❌ group constraint violated for node 39 in path [46, 39]. Violating group_id: 673, nodes: [46, 39]
+❌ group constraint violated for node 15 in path [46, 15]. Violating group_id: 4, nodes: [46, 15]
+❌ group constraint violated for node 49 in path [46, 49]. Violating group_id: 4, nodes: [46, 49]
+Valid MAC picks for 46: [42]
+Best pick: 42, sum of weights with path: 5, remaining: []
+Exploring best pick: 42 with path: [46]
+Stack state: [(42, [46], [])]
+--- Loop 2 ---
+POPPED: node=42, path=[46], remaining_picks=[]
+Exploring node 42, new path: [46, 42]
+Node 46 of type All that needs 3 has 2 r_conns with path: [46, 42].
+Node 42 of type Half+ that needs 2 has 1 r_conns with path: [46, 42].
+Node 42 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 34 in path [46, 42, 34]. Violating group_id: 3, nodes: [42, 34]
+❌ group constraint violated for node 39 in path [46, 42, 39]. Violating group_id: 673, nodes: [46, 39]
+❌ group constraint violated for node 44 in path [46, 42, 44]. Violating group_id: 8, nodes: [42, 44]
+❌ group constraint violated for node 14 in path [46, 42, 14]. Violating group_id: 4, nodes: [46, 14]
+❌ group constraint violated for node 15 in path [46, 42, 15]. Violating group_id: 8, nodes: [42, 15]
+❌ group constraint violated for node 48 in path [46, 42, 48]. Violating group_id: 7, nodes: [42, 48]
+❌ group constraint violated for node 49 in path [46, 42, 49]. Violating group_id: 7, nodes: [42, 49]
+❌ group constraint violated for node 24 in path [46, 42, 24]. Violating group_id: 673, nodes: [46, 24]
+❌ group constraint violated for node 29 in path [46, 42, 29]. Violating group_id: 1, nodes: [42, 29]
+Valid path picks for [46, 42]: []
+No valid picks for 42, backtracking...
+Stack state: []
+DFS complete in 2 iterations. No complete group found.
+❌ No group found starting from 46
+>>> Starting DFS from seed node: 28
+=== Starting DFS with seed node: 28 ===
+--- Loop 1 ---
+POPPED: node=28, path=[], remaining_picks=[]
+Exploring node 28, new path: [28]
+Node 28 of type Half+ that needs 2 has 2 r_conns with path: [28].
+Valid MAC picks for 28: []
+No valid picks for 28, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 28
+>>> Starting DFS from seed node: 25
+=== Starting DFS with seed node: 25 ===
+--- Loop 1 ---
+POPPED: node=25, path=[], remaining_picks=[]
+Exploring node 25, new path: [25]
+Node 25 of type All that needs 3 has 3 r_conns with path: [25].
+❌ group constraint violated for node 43 in path [25, 43]. Violating group_id: 4, nodes: [25, 43]
+❌ group constraint violated for node 17 in path [25, 17]. Violating group_id: 4, nodes: [25, 17]
+❌ group constraint violated for node 49 in path [25, 49]. Violating group_id: 4, nodes: [25, 49]
+Valid MAC picks for 25: [2, 29]
+Best pick: 2, sum of weights with path: 4, remaining: [29]
+Added backtrack option: node=25, remaining_picks=[29]
+Exploring best pick: 2 with path: [25]
+Stack state: [(25, [], [29]), (2, [25], [])]
+--- Loop 2 ---
+POPPED: node=2, path=[25], remaining_picks=[]
+Exploring node 2, new path: [25, 2]
+Node 25 of type All that needs 3 has 2 r_conns with path: [25, 2].
+Node 2 of type Half+ that needs 2 has 1 r_conns with path: [25, 2].
+Node 2 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 43 in path [25, 2, 43]. Violating group_id: 4, nodes: [25, 43]
+❌ group constraint violated for node 12 in path [25, 2, 12]. Violating group_id: 5, nodes: [25, 12]
+❌ group constraint violated for node 15 in path [25, 2, 15]. Violating group_id: 5, nodes: [25, 15]
+❌ group constraint violated for node 16 in path [25, 2, 16]. Violating group_id: 4, nodes: [25, 16]
+❌ group constraint violated for node 17 in path [25, 2, 17]. Violating group_id: 4, nodes: [25, 17]
+❌ group constraint violated for node 49 in path [25, 2, 49]. Violating group_id: 4, nodes: [25, 49]
+Valid path picks for [25, 2]: [24, 29]
+Best pick: 24, sum of weights with path: 3, remaining: [29]
+Added backtrack option: node=2, remaining_picks=[29]
+Exploring best pick: 24 with path: [25, 2]
+Stack state: [(25, [], [29]), (2, [25], [29]), (24, [25, 2], [])]
+--- Loop 3 ---
+POPPED: node=24, path=[25, 2], remaining_picks=[]
+Exploring node 24, new path: [25, 2, 24]
+Node 25 of type All that needs 3 has 1 r_conns with path: [25, 2, 24].
+Node 2 of type Half+ that needs 2 has 1 r_conns with path: [25, 2, 24].
+Node 24 of type All that needs 3 has 2 r_conns with path: [25, 2, 24].
+Path [25, 2, 24] is not feasible, backtracking...
+--- Loop 4 ---
+POPPED: node=2, path=[25], remaining_picks=[29]
+Trying next pick from current level: 29
+--- Loop 5 ---
+POPPED: node=29, path=[25, 2], remaining_picks=[]
+Exploring node 29, new path: [25, 2, 29]
+Node 25 of type All that needs 3 has 1 r_conns with path: [25, 2, 29].
+Node 2 of type Half+ that needs 2 has 1 r_conns with path: [25, 2, 29].
+Node 29 of type All that needs 3 has 2 r_conns with path: [25, 2, 29].
+Path [25, 2, 29] is not feasible, backtracking...
+--- Loop 6 ---
+POPPED: node=2, path=[25], remaining_picks=[]
+Node 2 already visited, backtracking...
+--- Loop 7 ---
+POPPED: node=25, path=[], remaining_picks=[29]
+Trying next pick from current level: 29
+--- Loop 8 ---
+POPPED: node=29, path=[25], remaining_picks=[]
+Node 29 already visited, backtracking...
+--- Loop 9 ---
+POPPED: node=25, path=[], remaining_picks=[]
+Node 25 already visited, backtracking...
+DFS complete in 9 iterations. No complete group found.
+❌ No group found starting from 25
+>>> Starting DFS from seed node: 44
+=== Starting DFS with seed node: 44 ===
+--- Loop 1 ---
+POPPED: node=44, path=[], remaining_picks=[]
+Exploring node 44, new path: [44]
+Node 44 of type Half+ that needs 2 has 2 r_conns with path: [44].
+Valid MAC picks for 44: []
+No valid picks for 44, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 44
+>>> Starting DFS from seed node: 36
+=== Starting DFS with seed node: 36 ===
+--- Loop 1 ---
+POPPED: node=36, path=[], remaining_picks=[]
+Exploring node 36, new path: [36]
+Node 36 of type All that needs 3 has 3 r_conns with path: [36].
+❌ group constraint violated for node 34 in path [36, 34]. Violating group_id: 5, nodes: [36, 34]
+❌ group constraint violated for node 12 in path [36, 12]. Violating group_id: 9, nodes: [36, 12]
+❌ group constraint violated for node 16 in path [36, 16]. Violating group_id: 6, nodes: [36, 16]
+❌ group constraint violated for node 48 in path [36, 48]. Violating group_id: 5, nodes: [36, 48]
+Valid MAC picks for 36: [17]
+Best pick: 17, sum of weights with path: 6, remaining: []
+Exploring best pick: 17 with path: [36]
+Stack state: [(17, [36], [])]
+--- Loop 2 ---
+POPPED: node=17, path=[36], remaining_picks=[]
+Exploring node 17, new path: [36, 17]
+Node 36 of type All that needs 3 has 2 r_conns with path: [36, 17].
+Node 17 of type Half+ that needs 2 has 1 r_conns with path: [36, 17].
+Node 17 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 16 in path [36, 17, 16]. Violating group_id: 4, nodes: [17, 16]
+❌ group constraint violated for node 48 in path [36, 17, 48]. Violating group_id: 5, nodes: [36, 48]
+❌ group constraint violated for node 34 in path [36, 17, 34]. Violating group_id: 5, nodes: [36, 34]
+❌ group constraint violated for node 12 in path [36, 17, 12]. Violating group_id: 9, nodes: [36, 12]
+❌ group constraint violated for node 44 in path [36, 17, 44]. Violating group_id: 8, nodes: [17, 44]
+Valid path picks for [36, 17]: []
+No valid picks for 17, backtracking...
+Stack state: []
+DFS complete in 2 iterations. No complete group found.
+❌ No group found starting from 36
+>>> Starting DFS from seed node: 6
+=== Starting DFS with seed node: 6 ===
+--- Loop 1 ---
+POPPED: node=6, path=[], remaining_picks=[]
+Exploring node 6, new path: [6]
+Node 6 of type One+ that needs 1 has 1 r_conns with path: [6].
+Valid MAC picks for 6: []
+No valid picks for 6, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 6
+>>> Starting DFS from seed node: 30
+=== Starting DFS with seed node: 30 ===
+--- Loop 1 ---
+POPPED: node=30, path=[], remaining_picks=[]
+Exploring node 30, new path: [30]
+Node 30 of type Half+ that needs 2 has 2 r_conns with path: [30].
+Valid MAC picks for 30: []
+No valid picks for 30, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 30
+>>> Starting DFS from seed node: 3
+=== Starting DFS with seed node: 3 ===
+--- Loop 1 ---
+POPPED: node=3, path=[], remaining_picks=[]
+Exploring node 3, new path: [3]
+Node 3 of type Half+ that needs 2 has 2 r_conns with path: [3].
+Valid MAC picks for 3: []
+No valid picks for 3, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 3
+>>> Starting DFS from seed node: 38
+=== Starting DFS with seed node: 38 ===
+--- Loop 1 ---
+POPPED: node=38, path=[], remaining_picks=[]
+Exploring node 38, new path: [38]
+Node 38 of type One+ that needs 1 has 1 r_conns with path: [38].
+Valid MAC picks for 38: []
+No valid picks for 38, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 38
+>>> Starting DFS from seed node: 10
+=== Starting DFS with seed node: 10 ===
+--- Loop 1 ---
+POPPED: node=10, path=[], remaining_picks=[]
+Exploring node 10, new path: [10]
+Node 10 of type All that needs 3 has 3 r_conns with path: [10].
+Valid MAC picks for 10: []
+No valid picks for 10, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 10
+>>> Starting DFS from seed node: 9
+=== Starting DFS with seed node: 9 ===
+--- Loop 1 ---
+POPPED: node=9, path=[], remaining_picks=[]
+Exploring node 9, new path: [9]
+Node 9 of type All that needs 3 has 3 r_conns with path: [9].
+Valid MAC picks for 9: []
+No valid picks for 9, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 9
+>>> Starting DFS from seed node: 42
+=== Starting DFS with seed node: 42 ===
+--- Loop 1 ---
+POPPED: node=42, path=[], remaining_picks=[]
+Exploring node 42, new path: [42]
+Node 42 of type Half+ that needs 2 has 2 r_conns with path: [42].
+Valid MAC picks for 42: []
+No valid picks for 42, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 42
+>>> Starting DFS from seed node: 16
+=== Starting DFS with seed node: 16 ===
+--- Loop 1 ---
+POPPED: node=16, path=[], remaining_picks=[]
+Exploring node 16, new path: [16]
+Node 16 of type All that needs 3 has 3 r_conns with path: [16].
+❌ group constraint violated for node 14 in path [16, 14]. Violating group_id: 6, nodes: [16, 14]
+❌ group constraint violated for node 17 in path [16, 17]. Violating group_id: 8, nodes: [16, 17]
+❌ group constraint violated for node 18 in path [16, 18]. Violating group_id: 6, nodes: [16, 18]
+❌ group constraint violated for node 25 in path [16, 25]. Violating group_id: 4, nodes: [16, 25]
+❌ group constraint violated for node 28 in path [16, 28]. Violating group_id: 4, nodes: [16, 28]
+❌ group constraint violated for node 34 in path [16, 34]. Violating group_id: 4, nodes: [16, 34]
+❌ group constraint violated for node 36 in path [16, 36]. Violating group_id: 6, nodes: [16, 36]
+❌ group constraint violated for node 42 in path [16, 42]. Violating group_id: 8, nodes: [16, 42]
+❌ group constraint violated for node 48 in path [16, 48]. Violating group_id: 6, nodes: [16, 48]
+❌ group constraint violated for node 49 in path [16, 49]. Violating group_id: 6, nodes: [16, 49]
+Valid MAC picks for 16: [39, 47, 22, 23, 24]
+Best pick: 39, sum of weights with path: 3, remaining: [47, 22, 23, 24]
+Added backtrack option: node=16, remaining_picks=[47, 22, 23, 24]
+Exploring best pick: 39 with path: [16]
+Stack state: [(16, [], [47, 22, 23, 24]), (39, [16], [])]
+--- Loop 2 ---
+POPPED: node=39, path=[16], remaining_picks=[]
+Exploring node 39, new path: [16, 39]
+Node 16 of type All that needs 3 has 2 r_conns with path: [16, 39].
+Node 39 of type Half+ that needs 2 has 1 r_conns with path: [16, 39].
+❌ group constraint violated for node 42 in path [16, 39, 42]. Violating group_id: 8, nodes: [16, 42]
+❌ group constraint violated for node 12 in path [16, 39, 12]. Violating group_id: 9, nodes: [39, 12]
+❌ group constraint violated for node 14 in path [16, 39, 14]. Violating group_id: 9, nodes: [39, 14]
+❌ group constraint violated for node 18 in path [16, 39, 18]. Violating group_id: 6, nodes: [16, 18]
+❌ group constraint violated for node 24 in path [16, 39, 24]. Violating group_id: 673, nodes: [39, 24]
+Valid MAC picks for 39: [23]
+Best pick: 23, sum of weights with path: 9, remaining: []
+Exploring best pick: 23 with path: [16, 39]
+Stack state: [(16, [], [47, 22, 23, 24]), (23, [16, 39], [])]
+--- Loop 3 ---
+POPPED: node=23, path=[16, 39], remaining_picks=[]
+Exploring node 23, new path: [16, 39, 23]
+Node 16 of type All that needs 3 has 1 r_conns with path: [16, 39, 23].
+Node 39 of type Half+ that needs 2 has 0 r_conns with path: [16, 39, 23].
+Node 23 of type All that needs 3 has 1 r_conns with path: [16, 39, 23].
+Node 23 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 12 in path [16, 39, 23, 12]. Violating group_id: 9, nodes: [39, 12]
+❌ group constraint violated for node 14 in path [16, 39, 23, 14]. Violating group_id: 2, nodes: [23, 14]
+❌ group constraint violated for node 15 in path [16, 39, 23, 15]. Violating group_id: 6, nodes: [16, 15]
+❌ group constraint violated for node 17 in path [16, 39, 23, 17]. Violating group_id: 8, nodes: [16, 17]
+❌ group constraint violated for node 18 in path [16, 39, 23, 18]. Violating group_id: 6, nodes: [16, 18]
+❌ group constraint violated for node 24 in path [16, 39, 23, 24]. Violating group_id: 673, nodes: [39, 24]
+❌ group constraint violated for node 25 in path [16, 39, 23, 25]. Violating group_id: 4, nodes: [16, 25]
+❌ group constraint violated for node 28 in path [16, 39, 23, 28]. Violating group_id: 4, nodes: [16, 28]
+❌ group constraint violated for node 34 in path [16, 39, 23, 34]. Violating group_id: 2, nodes: [23, 34]
+❌ group constraint violated for node 36 in path [16, 39, 23, 36]. Violating group_id: 2, nodes: [23, 36]
+❌ group constraint violated for node 38 in path [16, 39, 23, 38]. Violating group_id: 4, nodes: [16, 38]
+❌ group constraint violated for node 40 in path [16, 39, 23, 40]. Violating group_id: 6, nodes: [16, 40]
+❌ group constraint violated for node 41 in path [16, 39, 23, 41]. Violating group_id: 4, nodes: [16, 41]
+❌ group constraint violated for node 42 in path [16, 39, 23, 42]. Violating group_id: 8, nodes: [16, 42]
+❌ group constraint violated for node 43 in path [16, 39, 23, 43]. Violating group_id: 4, nodes: [16, 43]
+❌ group constraint violated for node 44 in path [16, 39, 23, 44]. Violating group_id: 8, nodes: [16, 44]
+❌ group constraint violated for node 47 in path [16, 39, 23, 47]. Violating group_id: 9, nodes: [39, 47]
+❌ group constraint violated for node 48 in path [16, 39, 23, 48]. Violating group_id: 6, nodes: [16, 48]
+❌ group constraint violated for node 49 in path [16, 39, 23, 49]. Violating group_id: 6, nodes: [16, 49]
+Valid path picks for [16, 39, 23]: [22]
+Best pick: 22, sum of weights with path: 4, remaining: []
+Exploring best pick: 22 with path: [16, 39, 23]
+Stack state: [(16, [], [47, 22, 23, 24]), (22, [16, 39, 23], [])]
+--- Loop 4 ---
+POPPED: node=22, path=[16, 39, 23], remaining_picks=[]
+Exploring node 22, new path: [16, 39, 23, 22]
+  Validating Type requirements for group: [16, 39, 23, 22]
+   ✅ Node 16 (Type: All) needs 3 connections and has 3
+   ✅ Node 39 (Type: Half+) needs 2 connections and has 2
+   ❌ Node 23 (Type: All) needs 3 connections but only has 2
+❌ Group [16, 39, 23, 22] rejected - not all members meet type/MAC requirements
+--- Loop 5 ---
+POPPED: node=16, path=[], remaining_picks=[47, 22, 23, 24]
+Trying next pick from current level: 47
+--- Loop 6 ---
+POPPED: node=47, path=[16], remaining_picks=[]
+Exploring node 47, new path: [16, 47]
+Node 16 of type All that needs 3 has 2 r_conns with path: [16, 47].
+Node 47 of type One+ that needs 1 has 0 r_conns with path: [16, 47].
+❌ group constraint violated for node 42 in path [16, 47, 42]. Violating group_id: 7, nodes: [47, 42]
+❌ group constraint violated for node 14 in path [16, 47, 14]. Violating group_id: 9, nodes: [47, 14]
+❌ group constraint violated for node 17 in path [16, 47, 17]. Violating group_id: 8, nodes: [16, 17]
+❌ group constraint violated for node 49 in path [16, 47, 49]. Violating group_id: 7, nodes: [47, 49]
+Valid MAC picks for 47: [23]
+Best pick: 23, sum of weights with path: 9, remaining: []
+Exploring best pick: 23 with path: [16, 47]
+Stack state: [(16, [], [22, 23, 24]), (23, [16, 47], [])]
+--- Loop 7 ---
+POPPED: node=23, path=[16, 47], remaining_picks=[]
+Node 23 already visited, backtracking...
+--- Loop 8 ---
+POPPED: node=16, path=[], remaining_picks=[22, 23, 24]
+Trying next pick from current level: 22
+--- Loop 9 ---
+POPPED: node=22, path=[16], remaining_picks=[]
+Node 22 already visited, backtracking...
+--- Loop 10 ---
+POPPED: node=16, path=[], remaining_picks=[23, 24]
+Trying next pick from current level: 23
+--- Loop 11 ---
+POPPED: node=23, path=[16], remaining_picks=[]
+Node 23 already visited, backtracking...
+--- Loop 12 ---
+POPPED: node=16, path=[], remaining_picks=[24]
+Trying next pick from current level: 24
+--- Loop 13 ---
+POPPED: node=24, path=[16], remaining_picks=[]
+Exploring node 24, new path: [16, 24]
+Node 16 of type All that needs 3 has 2 r_conns with path: [16, 24].
+Node 24 of type All that needs 3 has 2 r_conns with path: [16, 24].
+Node 24 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 12 in path [16, 24, 12]. Violating group_id: 6, nodes: [16, 12]
+❌ group constraint violated for node 14 in path [16, 24, 14]. Violating group_id: 6, nodes: [16, 14]
+❌ group constraint violated for node 15 in path [16, 24, 15]. Violating group_id: 6, nodes: [16, 15]
+❌ group constraint violated for node 17 in path [16, 24, 17]. Violating group_id: 8, nodes: [16, 17]
+❌ group constraint violated for node 18 in path [16, 24, 18]. Violating group_id: 6, nodes: [16, 18]
+❌ group constraint violated for node 25 in path [16, 24, 25]. Violating group_id: 4, nodes: [16, 25]
+❌ group constraint violated for node 28 in path [16, 24, 28]. Violating group_id: 4, nodes: [16, 28]
+❌ group constraint violated for node 34 in path [16, 24, 34]. Violating group_id: 4, nodes: [16, 34]
+❌ group constraint violated for node 36 in path [16, 24, 36]. Violating group_id: 6, nodes: [16, 36]
+❌ group constraint violated for node 38 in path [16, 24, 38]. Violating group_id: 4, nodes: [16, 38]
+❌ group constraint violated for node 39 in path [16, 24, 39]. Violating group_id: 673, nodes: [24, 39]
+❌ group constraint violated for node 40 in path [16, 24, 40]. Violating group_id: 6, nodes: [16, 40]
+❌ group constraint violated for node 41 in path [16, 24, 41]. Violating group_id: 4, nodes: [16, 41]
+❌ group constraint violated for node 42 in path [16, 24, 42]. Violating group_id: 8, nodes: [16, 42]
+❌ group constraint violated for node 43 in path [16, 24, 43]. Violating group_id: 4, nodes: [16, 43]
+❌ group constraint violated for node 44 in path [16, 24, 44]. Violating group_id: 8, nodes: [16, 44]
+❌ group constraint violated for node 46 in path [16, 24, 46]. Violating group_id: 4, nodes: [16, 46]
+❌ group constraint violated for node 48 in path [16, 24, 48]. Violating group_id: 6, nodes: [16, 48]
+❌ group constraint violated for node 49 in path [16, 24, 49]. Violating group_id: 6, nodes: [16, 49]
+Valid path picks for [16, 24]: [47, 23]
+Best pick: 47, sum of weights with path: 3, remaining: [23]
+Added backtrack option: node=24, remaining_picks=[23]
+Exploring best pick: 47 with path: [16, 24]
+Stack state: [(16, [], []), (24, [16], [23]), (47, [16, 24], [])]
+--- Loop 14 ---
+POPPED: node=47, path=[16, 24], remaining_picks=[]
+Node 47 already visited, backtracking...
+--- Loop 15 ---
+POPPED: node=24, path=[16], remaining_picks=[23]
+Trying next pick from current level: 23
+--- Loop 16 ---
+POPPED: node=23, path=[16, 24], remaining_picks=[]
+Node 23 already visited, backtracking...
+--- Loop 17 ---
+POPPED: node=24, path=[16], remaining_picks=[]
+Node 24 already visited, backtracking...
+--- Loop 18 ---
+POPPED: node=16, path=[], remaining_picks=[]
+Node 16 already visited, backtracking...
+DFS complete in 18 iterations. No complete group found.
+❌ No group found starting from 16
+>>> Starting DFS from seed node: 34
+=== Starting DFS with seed node: 34 ===
+--- Loop 1 ---
+POPPED: node=34, path=[], remaining_picks=[]
+Exploring node 34, new path: [34]
+Node 34 of type One+ that needs 1 has 1 r_conns with path: [34].
+Valid MAC picks for 34: []
+No valid picks for 34, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 34
+>>> Starting DFS from seed node: 49
+=== Starting DFS with seed node: 49 ===
+--- Loop 1 ---
+POPPED: node=49, path=[], remaining_picks=[]
+Exploring node 49, new path: [49]
+Node 49 of type All that needs 3 has 3 r_conns with path: [49].
+❌ group constraint violated for node 8 in path [49, 8]. Violating group_id: 6, nodes: [49, 8]
+❌ group constraint violated for node 43 in path [49, 43]. Violating group_id: 4, nodes: [49, 43]
+❌ group constraint violated for node 12 in path [49, 12]. Violating group_id: 7, nodes: [49, 12]
+❌ group constraint violated for node 14 in path [49, 14]. Violating group_id: 6, nodes: [49, 14]
+❌ group constraint violated for node 15 in path [49, 15]. Violating group_id: 6, nodes: [49, 15]
+❌ group constraint violated for node 16 in path [49, 16]. Violating group_id: 4, nodes: [49, 16]
+❌ group constraint violated for node 46 in path [49, 46]. Violating group_id: 4, nodes: [49, 46]
+❌ group constraint violated for node 47 in path [49, 47]. Violating group_id: 7, nodes: [49, 47]
+❌ group constraint violated for node 48 in path [49, 48]. Violating group_id: 6, nodes: [49, 48]
+Valid MAC picks for 49: []
+No valid picks for 49, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 49
+>>> Starting DFS from seed node: 7
+=== Starting DFS with seed node: 7 ===
+--- Loop 1 ---
+POPPED: node=7, path=[], remaining_picks=[]
+Exploring node 7, new path: [7]
+Node 7 of type All that needs 3 has 3 r_conns with path: [7].
+Valid MAC picks for 7: []
+No valid picks for 7, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 7
+>>> Starting DFS from seed node: 15
+=== Starting DFS with seed node: 15 ===
+--- Loop 1 ---
+POPPED: node=15, path=[], remaining_picks=[]
+Exploring node 15, new path: [15]
+Node 15 of type All that needs 3 has 3 r_conns with path: [15].
+❌ group constraint violated for node 12 in path [15, 12]. Violating group_id: 5, nodes: [15, 12]
+❌ group constraint violated for node 18 in path [15, 18]. Violating group_id: 6, nodes: [15, 18]
+❌ group constraint violated for node 25 in path [15, 25]. Violating group_id: 5, nodes: [15, 25]
+❌ group constraint violated for node 28 in path [15, 28]. Violating group_id: 4, nodes: [15, 28]
+❌ group constraint violated for node 29 in path [15, 29]. Violating group_id: 1, nodes: [15, 29]
+❌ group constraint violated for node 38 in path [15, 38]. Violating group_id: 4, nodes: [15, 38]
+❌ group constraint violated for node 40 in path [15, 40]. Violating group_id: 6, nodes: [15, 40]
+❌ group constraint violated for node 42 in path [15, 42]. Violating group_id: 8, nodes: [15, 42]
+❌ group constraint violated for node 44 in path [15, 44]. Violating group_id: 8, nodes: [15, 44]
+❌ group constraint violated for node 46 in path [15, 46]. Violating group_id: 4, nodes: [15, 46]
+Valid MAC picks for 15: [24, 22, 23]
+Best pick: 24, sum of weights with path: 3, remaining: [22, 23]
+Added backtrack option: node=15, remaining_picks=[22, 23]
+Exploring best pick: 24 with path: [15]
+Stack state: [(15, [], [22, 23]), (24, [15], [])]
+--- Loop 2 ---
+POPPED: node=24, path=[15], remaining_picks=[]
+Exploring node 24, new path: [15, 24]
+Node 15 of type All that needs 3 has 2 r_conns with path: [15, 24].
+Node 24 of type All that needs 3 has 2 r_conns with path: [15, 24].
+❌ group constraint violated for node 44 in path [15, 24, 44]. Violating group_id: 8, nodes: [15, 44]
+❌ group constraint violated for node 16 in path [15, 24, 16]. Violating group_id: 4, nodes: [15, 16]
+❌ group constraint violated for node 48 in path [15, 24, 48]. Violating group_id: 5, nodes: [15, 48]
+❌ group constraint violated for node 25 in path [15, 24, 25]. Violating group_id: 5, nodes: [15, 25]
+Valid MAC picks for 24: []
+No valid picks for 24, backtracking...
+Stack state: [(15, [], [22, 23])]
+--- Loop 3 ---
+POPPED: node=15, path=[], remaining_picks=[22, 23]
+Trying next pick from current level: 22
+--- Loop 4 ---
+POPPED: node=22, path=[15], remaining_picks=[]
+Exploring node 22, new path: [15, 22]
+Node 15 of type All that needs 3 has 2 r_conns with path: [15, 22].
+Node 22 of type One+ that needs 1 has 0 r_conns with path: [15, 22].
+Node 22 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 12 in path [15, 22, 12]. Violating group_id: 5, nodes: [15, 12]
+❌ group constraint violated for node 14 in path [15, 22, 14]. Violating group_id: 6, nodes: [15, 14]
+❌ group constraint violated for node 18 in path [15, 22, 18]. Violating group_id: 6, nodes: [15, 18]
+❌ group constraint violated for node 25 in path [15, 22, 25]. Violating group_id: 5, nodes: [15, 25]
+❌ group constraint violated for node 28 in path [15, 22, 28]. Violating group_id: 4, nodes: [15, 28]
+❌ group constraint violated for node 29 in path [15, 22, 29]. Violating group_id: 1, nodes: [15, 29]
+❌ group constraint violated for node 38 in path [15, 22, 38]. Violating group_id: 4, nodes: [15, 38]
+❌ group constraint violated for node 40 in path [15, 22, 40]. Violating group_id: 6, nodes: [15, 40]
+❌ group constraint violated for node 42 in path [15, 22, 42]. Violating group_id: 8, nodes: [15, 42]
+❌ group constraint violated for node 44 in path [15, 22, 44]. Violating group_id: 8, nodes: [15, 44]
+❌ group constraint violated for node 46 in path [15, 22, 46]. Violating group_id: 4, nodes: [15, 46]
+❌ group constraint violated for node 48 in path [15, 22, 48]. Violating group_id: 5, nodes: [15, 48]
+Valid path picks for [15, 22]: [24, 23]
+Best pick: 24, sum of weights with path: 3, remaining: [23]
+Added backtrack option: node=22, remaining_picks=[23]
+Exploring best pick: 24 with path: [15, 22]
+Stack state: [(15, [], [23]), (22, [15], [23]), (24, [15, 22], [])]
+--- Loop 5 ---
+POPPED: node=24, path=[15, 22], remaining_picks=[]
+Node 24 already visited, backtracking...
+--- Loop 6 ---
+POPPED: node=22, path=[15], remaining_picks=[23]
+Trying next pick from current level: 23
+--- Loop 7 ---
+POPPED: node=23, path=[15, 22], remaining_picks=[]
+Exploring node 23, new path: [15, 22, 23]
+Node 15 of type All that needs 3 has 1 r_conns with path: [15, 22, 23].
+Node 22 of type One+ that needs 1 has 0 r_conns with path: [15, 22, 23].
+Node 23 of type All that needs 3 has 2 r_conns with path: [15, 22, 23].
+Path [15, 22, 23] is not feasible, backtracking...
+--- Loop 8 ---
+POPPED: node=22, path=[15], remaining_picks=[]
+Node 22 already visited, backtracking...
+--- Loop 9 ---
+POPPED: node=15, path=[], remaining_picks=[23]
+Trying next pick from current level: 23
+--- Loop 10 ---
+POPPED: node=23, path=[15], remaining_picks=[]
+Node 23 already visited, backtracking...
+--- Loop 11 ---
+POPPED: node=15, path=[], remaining_picks=[]
+Node 15 already visited, backtracking...
+DFS complete in 11 iterations. No complete group found.
+❌ No group found starting from 15
+>>> Starting DFS from seed node: 2
+=== Starting DFS with seed node: 2 ===
+--- Loop 1 ---
+POPPED: node=2, path=[], remaining_picks=[]
+Exploring node 2, new path: [2]
+Node 2 of type Half+ that needs 2 has 2 r_conns with path: [2].
+Valid MAC picks for 2: []
+No valid picks for 2, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 2
+>>> Starting DFS from seed node: 22
+=== Starting DFS with seed node: 22 ===
+--- Loop 1 ---
+POPPED: node=22, path=[], remaining_picks=[]
+Exploring node 22, new path: [22]
+Node 22 of type One+ that needs 1 has 1 r_conns with path: [22].
+Valid MAC picks for 22: []
+No valid picks for 22, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 22
+>>> Starting DFS from seed node: 31
+=== Starting DFS with seed node: 31 ===
+--- Loop 1 ---
+POPPED: node=31, path=[], remaining_picks=[]
+Exploring node 31, new path: [31]
+Node 31 of type One+ that needs 1 has 1 r_conns with path: [31].
+Valid MAC picks for 31: []
+No valid picks for 31, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 31
+>>> Starting DFS from seed node: 23
+=== Starting DFS with seed node: 23 ===
+--- Loop 1 ---
+POPPED: node=23, path=[], remaining_picks=[]
+Exploring node 23, new path: [23]
+Node 23 of type All that needs 3 has 3 r_conns with path: [23].
+Valid MAC picks for 23: [39, 42, 44, 18, 24, 15, 16]
+Best pick: 39, sum of weights with path: 4, remaining: [42, 44, 18, 24, 15, 16]
+Added backtrack option: node=23, remaining_picks=[42, 44, 18, 24, 15, 16]
+Exploring best pick: 39 with path: [23]
+Stack state: [(23, [], [42, 44, 18, 24, 15, 16]), (39, [23], [])]
+--- Loop 2 ---
+POPPED: node=39, path=[23], remaining_picks=[]
+Exploring node 39, new path: [23, 39]
+Node 23 of type All that needs 3 has 2 r_conns with path: [23, 39].
+Node 39 of type Half+ that needs 2 has 1 r_conns with path: [23, 39].
+Node 39 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 12 in path [23, 39, 12]. Violating group_id: 9, nodes: [39, 12]
+❌ group constraint violated for node 14 in path [23, 39, 14]. Violating group_id: 2, nodes: [23, 14]
+❌ group constraint violated for node 18 in path [23, 39, 18]. Violating group_id: 9, nodes: [39, 18]
+❌ group constraint violated for node 24 in path [23, 39, 24]. Violating group_id: 673, nodes: [39, 24]
+❌ group constraint violated for node 28 in path [23, 39, 28]. Violating group_id: 2, nodes: [23, 28]
+❌ group constraint violated for node 41 in path [23, 39, 41]. Violating group_id: 2, nodes: [23, 41]
+❌ group constraint violated for node 43 in path [23, 39, 43]. Violating group_id: 2, nodes: [23, 43]
+❌ group constraint violated for node 44 in path [23, 39, 44]. Violating group_id: 673, nodes: [39, 44]
+❌ group constraint violated for node 47 in path [23, 39, 47]. Violating group_id: 9, nodes: [39, 47]
+Valid path picks for [23, 39]: [17, 48, 15, 42, 16]
+Best pick: 17, sum of weights with path: 2, remaining: [48, 15, 42, 16]
+Added backtrack option: node=39, remaining_picks=[48, 15, 42, 16]
+Exploring best pick: 17 with path: [23, 39]
+Stack state: [(23, [], [42, 44, 18, 24, 15, 16]), (39, [23], [48, 15, 42, 16]), (17, [23, 39], [])]
+--- Loop 3 ---
+POPPED: node=17, path=[23, 39], remaining_picks=[]
+Exploring node 17, new path: [23, 39, 17]
+Node 23 of type All that needs 3 has 1 r_conns with path: [23, 39, 17].
+Node 39 of type Half+ that needs 2 has 1 r_conns with path: [23, 39, 17].
+Node 17 of type Half+ that needs 2 has 1 r_conns with path: [23, 39, 17].
+❌ group constraint violated for node 34 in path [23, 39, 17, 34]. Violating group_id: 2, nodes: [23, 34]
+❌ group constraint violated for node 36 in path [23, 39, 17, 36]. Violating group_id: 2, nodes: [23, 36]
+❌ group constraint violated for node 41 in path [23, 39, 17, 41]. Violating group_id: 4, nodes: [17, 41]
+❌ group constraint violated for node 14 in path [23, 39, 17, 14]. Violating group_id: 2, nodes: [23, 14]
+❌ group constraint violated for node 47 in path [23, 39, 17, 47]. Violating group_id: 9, nodes: [39, 47]
+❌ group constraint violated for node 16 in path [23, 39, 17, 16]. Violating group_id: 4, nodes: [17, 16]
+❌ group constraint violated for node 18 in path [23, 39, 17, 18]. Violating group_id: 4, nodes: [17, 18]
+❌ group constraint violated for node 25 in path [23, 39, 17, 25]. Violating group_id: 4, nodes: [17, 25]
+Valid MAC picks for 17: [31]
+Best pick: 31, sum of weights with path: 6, remaining: []
+Exploring best pick: 31 with path: [23, 39, 17]
+Stack state: [(23, [], [42, 44, 18, 24, 15, 16]), (39, [23], [48, 15, 42, 16]), (31, [23, 39, 17], [])]
+--- Loop 4 ---
+POPPED: node=31, path=[23, 39, 17], remaining_picks=[]
+Exploring node 31, new path: [23, 39, 17, 31]
+  Validating Type requirements for group: [23, 39, 17, 31]
+   ❌ Node 23 (Type: All) needs 3 connections but only has 2
+❌ Group [23, 39, 17, 31] rejected - not all members meet type/MAC requirements
+--- Loop 5 ---
+POPPED: node=39, path=[23], remaining_picks=[48, 15, 42, 16]
+Trying next pick from current level: 48
+--- Loop 6 ---
+POPPED: node=48, path=[23, 39], remaining_picks=[]
+Exploring node 48, new path: [23, 39, 48]
+Node 23 of type All that needs 3 has 1 r_conns with path: [23, 39, 48].
+Node 39 of type Half+ that needs 2 has 1 r_conns with path: [23, 39, 48].
+Node 48 of type All that needs 3 has 2 r_conns with path: [23, 39, 48].
+Path [23, 39, 48] is not feasible, backtracking...
+--- Loop 7 ---
+POPPED: node=39, path=[23], remaining_picks=[15, 42, 16]
+Trying next pick from current level: 15
+--- Loop 8 ---
+POPPED: node=15, path=[23, 39], remaining_picks=[]
+Exploring node 15, new path: [23, 39, 15]
+Node 23 of type All that needs 3 has 1 r_conns with path: [23, 39, 15].
+Node 39 of type Half+ that needs 2 has 1 r_conns with path: [23, 39, 15].
+Node 15 of type All that needs 3 has 2 r_conns with path: [23, 39, 15].
+Path [23, 39, 15] is not feasible, backtracking...
+--- Loop 9 ---
+POPPED: node=39, path=[23], remaining_picks=[42, 16]
+Trying next pick from current level: 42
+--- Loop 10 ---
+POPPED: node=42, path=[23, 39], remaining_picks=[]
+Exploring node 42, new path: [23, 39, 42]
+Node 23 of type All that needs 3 has 1 r_conns with path: [23, 39, 42].
+Node 39 of type Half+ that needs 2 has 0 r_conns with path: [23, 39, 42].
+Node 42 of type Half+ that needs 2 has 0 r_conns with path: [23, 39, 42].
+❌ group constraint violated for node 41 in path [23, 39, 42, 41]. Violating group_id: 2, nodes: [23, 41]
+❌ group constraint violated for node 12 in path [23, 39, 42, 12]. Violating group_id: 9, nodes: [39, 12]
+❌ group constraint violated for node 15 in path [23, 39, 42, 15]. Violating group_id: 8, nodes: [42, 15]
+❌ group constraint violated for node 16 in path [23, 39, 42, 16]. Violating group_id: 1, nodes: [42, 16]
+❌ group constraint violated for node 17 in path [23, 39, 42, 17]. Violating group_id: 8, nodes: [42, 17]
+❌ group constraint violated for node 47 in path [23, 39, 42, 47]. Violating group_id: 7, nodes: [42, 47]
+Valid MAC picks for 42: []
+No valid picks for 42, backtracking...
+Stack state: [(23, [], [42, 44, 18, 24, 15, 16]), (39, [23], [16])]
+--- Loop 11 ---
+POPPED: node=39, path=[23], remaining_picks=[16]
+Trying next pick from current level: 16
+--- Loop 12 ---
+POPPED: node=16, path=[23, 39], remaining_picks=[]
+Exploring node 16, new path: [23, 39, 16]
+Node 23 of type All that needs 3 has 1 r_conns with path: [23, 39, 16].
+Node 39 of type Half+ that needs 2 has 0 r_conns with path: [23, 39, 16].
+Node 16 of type All that needs 3 has 1 r_conns with path: [23, 39, 16].
+Node 16 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 12 in path [23, 39, 16, 12]. Violating group_id: 9, nodes: [39, 12]
+❌ group constraint violated for node 14 in path [23, 39, 16, 14]. Violating group_id: 2, nodes: [23, 14]
+❌ group constraint violated for node 15 in path [23, 39, 16, 15]. Violating group_id: 6, nodes: [16, 15]
+❌ group constraint violated for node 17 in path [23, 39, 16, 17]. Violating group_id: 8, nodes: [16, 17]
+❌ group constraint violated for node 18 in path [23, 39, 16, 18]. Violating group_id: 6, nodes: [16, 18]
+❌ group constraint violated for node 24 in path [23, 39, 16, 24]. Violating group_id: 673, nodes: [39, 24]
+❌ group constraint violated for node 25 in path [23, 39, 16, 25]. Violating group_id: 4, nodes: [16, 25]
+❌ group constraint violated for node 28 in path [23, 39, 16, 28]. Violating group_id: 4, nodes: [16, 28]
+❌ group constraint violated for node 34 in path [23, 39, 16, 34]. Violating group_id: 2, nodes: [23, 34]
+❌ group constraint violated for node 36 in path [23, 39, 16, 36]. Violating group_id: 2, nodes: [23, 36]
+❌ group constraint violated for node 38 in path [23, 39, 16, 38]. Violating group_id: 4, nodes: [16, 38]
+❌ group constraint violated for node 40 in path [23, 39, 16, 40]. Violating group_id: 6, nodes: [16, 40]
+❌ group constraint violated for node 41 in path [23, 39, 16, 41]. Violating group_id: 4, nodes: [16, 41]
+❌ group constraint violated for node 42 in path [23, 39, 16, 42]. Violating group_id: 8, nodes: [16, 42]
+❌ group constraint violated for node 43 in path [23, 39, 16, 43]. Violating group_id: 4, nodes: [16, 43]
+❌ group constraint violated for node 44 in path [23, 39, 16, 44]. Violating group_id: 8, nodes: [16, 44]
+❌ group constraint violated for node 47 in path [23, 39, 16, 47]. Violating group_id: 9, nodes: [39, 47]
+❌ group constraint violated for node 48 in path [23, 39, 16, 48]. Violating group_id: 6, nodes: [16, 48]
+❌ group constraint violated for node 49 in path [23, 39, 16, 49]. Violating group_id: 6, nodes: [16, 49]
+Valid path picks for [23, 39, 16]: [22]
+Best pick: 22, sum of weights with path: 4, remaining: []
+Exploring best pick: 22 with path: [23, 39, 16]
+Stack state: [(23, [], [42, 44, 18, 24, 15, 16]), (39, [23], []), (22, [23, 39, 16], [])]
+--- Loop 13 ---
+POPPED: node=22, path=[23, 39, 16], remaining_picks=[]
+Exploring node 22, new path: [23, 39, 16, 22]
+  Validating Type requirements for group: [23, 39, 16, 22]
+   ❌ Node 23 (Type: All) needs 3 connections but only has 2
+❌ Group [23, 39, 16, 22] rejected - not all members meet type/MAC requirements
+--- Loop 14 ---
+POPPED: node=39, path=[23], remaining_picks=[]
+Node 39 already visited, backtracking...
+--- Loop 15 ---
+POPPED: node=23, path=[], remaining_picks=[42, 44, 18, 24, 15, 16]
+Trying next pick from current level: 42
+--- Loop 16 ---
+POPPED: node=42, path=[23], remaining_picks=[]
+Node 42 already visited, backtracking...
+--- Loop 17 ---
+POPPED: node=23, path=[], remaining_picks=[44, 18, 24, 15, 16]
+Trying next pick from current level: 44
+--- Loop 18 ---
+POPPED: node=44, path=[23], remaining_picks=[]
+Exploring node 44, new path: [23, 44]
+Node 23 of type All that needs 3 has 2 r_conns with path: [23, 44].
+Node 44 of type Half+ that needs 2 has 1 r_conns with path: [23, 44].
+Node 44 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 39 in path [23, 44, 39]. Violating group_id: 673, nodes: [44, 39]
+❌ group constraint violated for node 43 in path [23, 44, 43]. Violating group_id: 8, nodes: [44, 43]
+❌ group constraint violated for node 14 in path [23, 44, 14]. Violating group_id: 2, nodes: [23, 14]
+❌ group constraint violated for node 15 in path [23, 44, 15]. Violating group_id: 8, nodes: [44, 15]
+❌ group constraint violated for node 18 in path [23, 44, 18]. Violating group_id: 8, nodes: [44, 18]
+❌ group constraint violated for node 24 in path [23, 44, 24]. Violating group_id: 673, nodes: [44, 24]
+Valid path picks for [23, 44]: [12, 48]
+Best pick: 12, sum of weights with path: 7, remaining: [48]
+Added backtrack option: node=44, remaining_picks=[48]
+Exploring best pick: 12 with path: [23, 44]
+Stack state: [(23, [], [18, 24, 15, 16]), (44, [23], [48]), (12, [23, 44], [])]
+--- Loop 19 ---
+POPPED: node=12, path=[23, 44], remaining_picks=[]
+Exploring node 12, new path: [23, 44, 12]
+Node 23 of type All that needs 3 has 1 r_conns with path: [23, 44, 12].
+Node 44 of type Half+ that needs 2 has 0 r_conns with path: [23, 44, 12].
+Node 12 of type Half+ that needs 2 has 0 r_conns with path: [23, 44, 12].
+Node 12 passes MAC with path, getting union of path picks...
+❌ group constraint violated for node 39 in path [23, 44, 12, 39]. Violating group_id: 9, nodes: [12, 39]
+❌ group constraint violated for node 43 in path [23, 44, 12, 43]. Violating group_id: 8, nodes: [44, 43]
+❌ group constraint violated for node 14 in path [23, 44, 12, 14]. Violating group_id: 2, nodes: [23, 14]
+❌ group constraint violated for node 15 in path [23, 44, 12, 15]. Violating group_id: 6, nodes: [12, 15]
+❌ group constraint violated for node 48 in path [23, 44, 12, 48]. Violating group_id: 5, nodes: [12, 48]
+❌ group constraint violated for node 18 in path [23, 44, 12, 18]. Violating group_id: 7, nodes: [12, 18]
+❌ group constraint violated for node 24 in path [23, 44, 12, 24]. Violating group_id: 673, nodes: [44, 24]
+Valid path picks for [23, 44, 12]: []
+No valid picks for 12, backtracking...
+Stack state: [(23, [], [18, 24, 15, 16]), (44, [23], [48])]
+--- Loop 20 ---
+POPPED: node=44, path=[23], remaining_picks=[48]
+Trying next pick from current level: 48
+--- Loop 21 ---
+POPPED: node=48, path=[23, 44], remaining_picks=[]
+Node 48 already visited, backtracking...
+--- Loop 22 ---
+POPPED: node=44, path=[23], remaining_picks=[]
+Node 44 already visited, backtracking...
+--- Loop 23 ---
+POPPED: node=23, path=[], remaining_picks=[18, 24, 15, 16]
+Trying next pick from current level: 18
+--- Loop 24 ---
+POPPED: node=18, path=[23], remaining_picks=[]
+Exploring node 18, new path: [23, 18]
+Node 23 of type All that needs 3 has 2 r_conns with path: [23, 18].
+Node 18 of type All that needs 3 has 2 r_conns with path: [23, 18].
+❌ group constraint violated for node 39 in path [23, 18, 39]. Violating group_id: 9, nodes: [18, 39]
+❌ group constraint violated for node 15 in path [23, 18, 15]. Violating group_id: 6, nodes: [18, 15]
+❌ group constraint violated for node 16 in path [23, 18, 16]. Violating group_id: 4, nodes: [18, 16]
+❌ group constraint violated for node 17 in path [23, 18, 17]. Violating group_id: 8, nodes: [18, 17]
+❌ group constraint violated for node 28 in path [23, 18, 28]. Violating group_id: 4, nodes: [18, 28]
+❌ group constraint violated for node 29 in path [23, 18, 29]. Violating group_id: 9, nodes: [18, 29]
+Valid MAC picks for 18: []
+No valid picks for 18, backtracking...
+Stack state: [(23, [], [24, 15, 16])]
+--- Loop 25 ---
+POPPED: node=23, path=[], remaining_picks=[24, 15, 16]
+Trying next pick from current level: 24
+--- Loop 26 ---
+POPPED: node=24, path=[23], remaining_picks=[]
+Exploring node 24, new path: [23, 24]
+Node 23 of type All that needs 3 has 2 r_conns with path: [23, 24].
+Node 24 of type All that needs 3 has 2 r_conns with path: [23, 24].
+❌ group constraint violated for node 44 in path [23, 24, 44]. Violating group_id: 673, nodes: [24, 44]
+Valid MAC picks for 24: [25, 16, 48]
+Best pick: 25, sum of weights with path: 3, remaining: [16, 48]
+Added backtrack option: node=24, remaining_picks=[16, 48]
+Exploring best pick: 25 with path: [23, 24]
+Stack state: [(23, [], [15, 16]), (24, [23], [16, 48]), (25, [23, 24], [])]
+--- Loop 27 ---
+POPPED: node=25, path=[23, 24], remaining_picks=[]
+Exploring node 25, new path: [23, 24, 25]
+Node 23 of type All that needs 3 has 2 r_conns with path: [23, 24, 25].
+Path [23, 24, 25] is not feasible, backtracking...
+--- Loop 28 ---
+POPPED: node=24, path=[23], remaining_picks=[16, 48]
+Trying next pick from current level: 16
+--- Loop 29 ---
+POPPED: node=16, path=[23, 24], remaining_picks=[]
+Node 16 already visited, backtracking...
+--- Loop 30 ---
+POPPED: node=24, path=[23], remaining_picks=[48]
+Trying next pick from current level: 48
+--- Loop 31 ---
+POPPED: node=48, path=[23, 24], remaining_picks=[]
+Node 48 already visited, backtracking...
+--- Loop 32 ---
+POPPED: node=24, path=[23], remaining_picks=[]
+Node 24 already visited, backtracking...
+--- Loop 33 ---
+POPPED: node=23, path=[], remaining_picks=[15, 16]
+Trying next pick from current level: 15
+--- Loop 34 ---
+POPPED: node=15, path=[23], remaining_picks=[]
+Node 15 already visited, backtracking...
+--- Loop 35 ---
+POPPED: node=23, path=[], remaining_picks=[16]
+Trying next pick from current level: 16
+--- Loop 36 ---
+POPPED: node=16, path=[23], remaining_picks=[]
+Node 16 already visited, backtracking...
+--- Loop 37 ---
+POPPED: node=23, path=[], remaining_picks=[]
+Node 23 already visited, backtracking...
+DFS complete in 37 iterations. No complete group found.
+❌ No group found starting from 23
+>>> Starting DFS from seed node: 40
+=== Starting DFS with seed node: 40 ===
+--- Loop 1 ---
+POPPED: node=40, path=[], remaining_picks=[]
+Exploring node 40, new path: [40]
+Node 40 of type All that needs 3 has 3 r_conns with path: [40].
+❌ group constraint violated for node 42 in path [40, 42]. Violating group_id: 8, nodes: [40, 42]
+❌ group constraint violated for node 15 in path [40, 15]. Violating group_id: 6, nodes: [40, 15]
+❌ group constraint violated for node 16 in path [40, 16]. Violating group_id: 8, nodes: [40, 16]
+❌ group constraint violated for node 29 in path [40, 29]. Violating group_id: 9, nodes: [40, 29]
+Valid MAC picks for 40: [24]
+Best pick: 24, sum of weights with path: 3, remaining: []
+Exploring best pick: 24 with path: [40]
+Stack state: [(24, [40], [])]
+--- Loop 2 ---
+POPPED: node=24, path=[40], remaining_picks=[]
+Exploring node 24, new path: [40, 24]
+Node 40 of type All that needs 3 has 2 r_conns with path: [40, 24].
+Node 24 of type All that needs 3 has 2 r_conns with path: [40, 24].
+❌ group constraint violated for node 16 in path [40, 24, 16]. Violating group_id: 8, nodes: [40, 16]
+❌ group constraint violated for node 44 in path [40, 24, 44]. Violating group_id: 8, nodes: [40, 44]
+Valid MAC picks for 24: []
+No valid picks for 24, backtracking...
+Stack state: []
+DFS complete in 2 iterations. No complete group found.
+❌ No group found starting from 40
+>>> Starting DFS from seed node: 41
+=== Starting DFS with seed node: 41 ===
+--- Loop 1 ---
+POPPED: node=41, path=[], remaining_picks=[]
+Exploring node 41, new path: [41]
+Node 41 of type Half+ that needs 2 has 2 r_conns with path: [41].
+Valid MAC picks for 41: []
+No valid picks for 41, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 41
+>>> Starting DFS from seed node: 1
+=== Starting DFS with seed node: 1 ===
+--- Loop 1 ---
+POPPED: node=1, path=[], remaining_picks=[]
+Exploring node 1, new path: [1]
+Node 1 of type All that needs 3 has 3 r_conns with path: [1].
+Valid MAC picks for 1: []
+No valid picks for 1, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 1
+>>> Starting DFS from seed node: 0
+=== Starting DFS with seed node: 0 ===
+--- Loop 1 ---
+POPPED: node=0, path=[], remaining_picks=[]
+Exploring node 0, new path: [0]
+Node 0 of type Half+ that needs 2 has 2 r_conns with path: [0].
+Valid MAC picks for 0: []
+No valid picks for 0, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 0
+>>> Starting DFS from seed node: 39
+=== Starting DFS with seed node: 39 ===
+--- Loop 1 ---
+POPPED: node=39, path=[], remaining_picks=[]
+Exploring node 39, new path: [39]
+Node 39 of type Half+ that needs 2 has 2 r_conns with path: [39].
+Valid MAC picks for 39: []
+No valid picks for 39, backtracking...
+Stack state: []
+DFS complete in 1 iterations. No complete group found.
+❌ No group found starting from 39
+🎯 Total groups found: 1
+Group 1 (ID 673): [24, 44, 46, 39]
+============================================================
+📊 DETAILED ANALYSIS FOR GROUP 1: [24, 44, 46, 39]
+🔗 Connectivity Score (sum of all edge weights in group): 21
+============================================================
+🔹 NODE 24 (Type: All, MAC: 2)
+   Connections to other group members:
+     ✓ Connected to Node 44 (Type: Half+, MAC: 2)
+       • 24 rates 44: 3
+       • 44 rates 24: 2
+     ✓ Connected to Node 46 (Type: All, MAC: 2)
+       • 24 rates 46: 1
+       • 46 rates 24: 1
+     ✓ Connected to Node 39 (Type: Half+, MAC: 2)
+       • 24 rates 39: 1
+       • 39 rates 24: 3
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 3, Has 3 (✅ MEETS)
+🔹 NODE 44 (Type: Half+, MAC: 2)
+   Connections to other group members:
+     ✓ Connected to Node 24 (Type: All, MAC: 2)
+       • 44 rates 24: 2
+       • 24 rates 44: 3
+     ✓ Connected to Node 46 (Type: All, MAC: 2)
+       • 44 rates 46: 1
+       • 46 rates 44: 1
+     ✓ Connected to Node 39 (Type: Half+, MAC: 2)
+       • 44 rates 39: 2
+       • 39 rates 44: 3
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 2, Has 3 (✅ MEETS)
+🔹 NODE 46 (Type: All, MAC: 2)
+   Connections to other group members:
+     ✓ Connected to Node 24 (Type: All, MAC: 2)
+       • 46 rates 24: 1
+       • 24 rates 46: 1
+     ✓ Connected to Node 44 (Type: Half+, MAC: 2)
+       • 46 rates 44: 1
+       • 44 rates 46: 1
+     ✓ Connected to Node 39 (Type: Half+, MAC: 2)
+       • 46 rates 39: 2
+       • 39 rates 46: 1
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 3, Has 3 (✅ MEETS)
+🔹 NODE 39 (Type: Half+, MAC: 2)
+   Connections to other group members:
+     ✓ Connected to Node 24 (Type: All, MAC: 2)
+       • 39 rates 24: 3
+       • 24 rates 39: 1
+     ✓ Connected to Node 44 (Type: Half+, MAC: 2)
+       • 39 rates 44: 3
+       • 44 rates 39: 2
+     ✓ Connected to Node 46 (Type: All, MAC: 2)
+       • 39 rates 46: 1
+       • 46 rates 39: 2
+     📈 Connection Stats: 3/3 (100.0%)
+     🎯 Type Requirement: Needs 2, Has 3 (✅ MEETS)

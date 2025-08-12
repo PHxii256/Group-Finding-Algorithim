@@ -1,0 +1,21 @@
+Picks in relaxed mode dont have to be from mac pool after the first one
+
+Investigate max allowed premade nodes count in a group. (currently it's disallowing duplicate pairs i think), should we allow it? 
+
+add max groups for a node per algo run check
+
+add group rating to graph gen and add the +ve group rating constraint for the algo
+
+create bar chart showing failure reasons as a % of total fails
+
+
+unnesesary optimisations for later:
+- memoise failed paths due to empty mac pool
+(without the intersection filter ie. which depends on path context)
+
+- use the seed age tie breaker for equal total edge weights, for improved fairness
+
+
+
+
+

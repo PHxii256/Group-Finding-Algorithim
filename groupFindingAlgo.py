@@ -1,5 +1,6 @@
 import math 
 import logging
+import random
 from datetime import datetime
 from algoGraphGenerator import generate_graph
 
@@ -23,8 +24,19 @@ start_time = datetime.now()
 logger.info(f"Starting group finding algorithm - Log file: {log_filename}")
 
 my_graph = generate_graph()
-GROUP_SIZE = 4 # The size of the group we are trying to form
-MAX_PREMADE_NODES_PER_GROUP = 2 # The maximum number of premade nodes allowed per group
+
+# MAC (Min Affinity Constraint) checking mode
+# True: Relaxed - node needs only 1 connection >= MAC with any group member
+# False: Strict - current behavior (all connections must meet MAC requirements)
+RELAXED_MAC_CHECK = True
+# Use union of path picks instead of MAC picks for the frontier node (relaxed mode only)
+USE_UNION_OF_PATH_PICKS = False
+# The size of the group we are trying to form
+GROUP_SIZE = 4 
+# The maximum number of premade nodes allowed per group
+MAX_PREMADE_NODES_PER_GROUP = 2 
+
+logger.info(f"MAC Check Mode: {'Relaxed' if RELAXED_MAC_CHECK else 'Strict'}")
 
 failed_nodes = set() # Set of nodes that have failed in the current path
 ungroupable_nodes = set() # Set of nodes that cannot be grouped for current itteration
@@ -45,8 +57,17 @@ def remove_unavailable_nodes(my_graph):
     logger.info(f"Removed {removed_count} unavailable nodes out of {len(my_graph.nodes()) + removed_count}.")
     return removed_count
 
-def total_edge_weight(node_id, frontier_id):
+# Calculate the sum of weights between two nodes
+def edge_total_weight(node_id, frontier_id):
     return sum(my_graph.get_edge_data(frontier_id, node_id)['weight'].values())
+
+# Calculate the sum of weights between all of path's nodes and the given node
+def path_total_weight(node_id, path):
+    weight_sum = 0
+    for path_node_id in path:
+        if my_graph.has_edge(path_node_id, node_id):
+            weight_sum += sum(my_graph.get_edge_data(path_node_id, node_id)['weight'].values())
+    return weight_sum
 
 def get_path_bans(path):
     bans_set = set()
@@ -104,18 +125,21 @@ def get_node_remaining_conn_count(node_id, path, print_debug=False):
 
 def pass_group_constraints(node_id, original_path):
     path = original_path.copy()  # Create a copy of the path to avoid modifying the original
-    path.append(node_id) 
+    path.append(node_id)
     path_groups_list = []
     path_group_count_dict = {}
-    
+    violating_nodes = set()
+
     for node in path:
         path_groups_list.extend(my_graph.nodes[node]["groupIDs"])
 
     for group_id in path_groups_list:
         path_group_count_dict[group_id] = path_group_count_dict.get(group_id, 1) + 1
         if path_group_count_dict[group_id] > MAX_PREMADE_NODES_PER_GROUP:
+            violating_nodes = [n for n in path if group_id in my_graph.nodes[n]["groupIDs"]]
+            logger.info(f"❌ group constraint violated for node {node_id} in path {path}. Violating group_id: {group_id}, nodes: {violating_nodes}")
             return False  # Node fails group constraints
-        
+
     return True  # Node passes group constraints
 
 # Get list of path's nodes which are mandatory to have their picks included in the next selection
@@ -132,10 +156,12 @@ def get_mandatory_nodes_picks(path, path_bans = set()):
 
     return m_nodes_picks - path_bans - set(path)
 
-def get_frontier_picks(path):
-    path_bans = get_path_bans(path)
-
-    frontier_picks = get_node_picks(path[-1], path, bans=path_bans)
+def get_frontier_picks(path, path_bans= None, frontier=None):
+    if frontier is None:
+        frontier = path[-1]
+    if path_bans is None:    
+        path_bans = get_path_bans(path)
+    frontier_picks = get_node_picks(frontier, path, bans=path_bans)
     m_picks = get_mandatory_nodes_picks(path, path_bans)  # Get mandatory nodes picks
    
     # If there are mandatory picks, filter frontier picks to only include common / intersecting picks
@@ -157,21 +183,80 @@ def frontier_pass_mac_using_path(frontier_id, path):
             edge_data = my_graph.get_edge_data(frontier_id, node_id)
             if edge_data['weight'][node_id] >= my_graph.nodes[frontier_id]['mac']:
                 return True
+    return False
 
+# Get valid MAC picks for the current frontier node
 def get_valid_sorted_mac_pics(frontier_id, path):
     valid_mac_pics = []
     # mac picks here should be outside of the path
-    for pick_id in get_frontier_picks(path):
+    for pick_id in get_frontier_picks(path, frontier=path[-1]):
         if pass_mac(frontier_id, pick_id):
             if pass_group_constraints(pick_id, path):
                 valid_mac_pics.append(pick_id)
-    return sorted(valid_mac_pics, key=lambda x: total_edge_weight(x, frontier_id), reverse=False)
+    return sorted(valid_mac_pics, key=lambda x: edge_total_weight(x, frontier_id), reverse=False)
+
+# Get valid picks for all of current path (No MAC check)
+def get_valid_sorted_path_pics(path):
+    path_pics = set()
+    valid_pics = []
+    bans = get_path_bans(path)
+
+    for node_id in path:
+        path_pics.update(get_frontier_picks(path, path_bans=bans, frontier=node_id))
+
+    for pick_id in path_pics:
+        if pass_group_constraints(pick_id, path):
+            valid_pics.append(pick_id)
+    return sorted(valid_pics, key=lambda x: path_total_weight(x, path), reverse=False)
+
+def validate_group_mac_requirements(group):
+    """
+    Validates that all nodes in the group meet their MAC requirements.
+    Returns True if all nodes satisfy their MAC requirements, False otherwise.
+    """
+    logger.info(f"  Validating MAC requirements for group: {group}")
+    for node in group:
+        node_mac = my_graph.nodes[node]['mac']
+        if RELAXED_MAC_CHECK:
+            # Relaxed mode: node needs at least 1 connection >= MAC with any group member
+            has_mac_connection = False
+            for other_node in group:
+                if other_node != node and my_graph.has_edge(node, other_node):
+                    edge_data = my_graph.get_edge_data(node, other_node)
+                    if edge_data['weight'][other_node] >= node_mac:
+                        has_mac_connection = True
+                        break
+            
+            if not has_mac_connection:
+                logger.info(f"   ❌ Node {node} (MAC: {node_mac}) doesn't have any connection >= MAC in relaxed mode")
+                return False
+            else:
+                logger.info(f"   ✅ Node {node} (MAC: {node_mac}), {node_mac} >= 1 (relaxed mode)")
+        else:
+            # Strict mode: all connections must meet MAC requirements (if any connections exist)
+            connections_checked = 0
+            mac_failures = 0
+            for other_node in group:
+                if other_node != node and my_graph.has_edge(node, other_node):
+                    connections_checked += 1
+                    edge_data = my_graph.get_edge_data(node, other_node)
+                    if edge_data['weight'][other_node] < node_mac:
+                        mac_failures += 1
+            
+            if connections_checked > 0 and mac_failures > 0:
+                logger.info(f"   ❌ Node {node} (MAC: {node_mac}) has {mac_failures}/{connections_checked} connections below MAC in strict mode")
+                return False
+            else:
+                logger.info(f"   ✅ Node {node} (MAC: {node_mac}) meets MAC requirements in strict mode ({connections_checked} connections checked)")
+    
+    return True
 
 def validate_group_type_requirements(group):
     """
     Validates that all nodes in the group meet their type requirements.
     Returns True if all nodes satisfy their requirements, False otherwise.
     """
+    logger.info(f"  Validating Type requirements for group: {group}")
     for node in group:
         node_type = my_graph.nodes[node]['type']
         type_requirement = get_type_connection_count(node_type)
@@ -227,12 +312,12 @@ def dfs_iterative(start_node):
         
         # Check if we've reached the target group size
         if len(new_path) == GROUP_SIZE:
-            # Validate that all nodes in the group meet their type requirements
-            if validate_group_type_requirements(new_path):
+            # Validate that all nodes in the group meet their type requirements and MAC requirements
+            if validate_group_type_requirements(new_path) and validate_group_mac_requirements(new_path):
                 logger.info(f"🎉 FOUND COMPLETE GROUP: {new_path}")
                 return new_path  # Return the complete group
             else:
-                logger.info(f"❌ Group {new_path} rejected - not all members meet type requirements")
+                logger.info(f"❌ Group {new_path} rejected - not all members meet type/MAC requirements")
                 continue  # This path doesn't form a valid group, backtrack
         
         # Check if path is still feasible
@@ -240,31 +325,37 @@ def dfs_iterative(start_node):
             logger.info(f"Path {new_path} is not feasible, backtracking...")
             continue
         
+        current_picks = []
+        use_union = RELAXED_MAC_CHECK and USE_UNION_OF_PATH_PICKS
         # Check if current node passes MAC with existing path
-        if len(new_path) > 1 and frontier_pass_mac_using_path(current_node, new_path):
-            logger.info(f"Node {current_node} passes MAC with path, continuing...")
-        
-        # Get valid MAC picks for the current node
-        mac_picks = get_valid_sorted_mac_pics(current_node, new_path)
-        logger.info(f"Valid MAC picks for {current_node}: {mac_picks}")
-        
-        if mac_picks:
+        # If so we can get the union of path picks instead of mac picks of the frontier node
+        if use_union and len(new_path) > 1 and frontier_pass_mac_using_path(current_node, new_path):
+            logger.info(f"Node {current_node} passes MAC with path, getting union of path picks...")
+            current_picks = get_valid_sorted_path_pics(new_path)
+            logger.info(f"Valid path picks for {new_path}: {current_picks}")
+        else:
+            # Get valid MAC picks for the current node
+            current_picks = get_valid_sorted_mac_pics(current_node, new_path)
+            logger.info(f"Valid MAC picks for {current_node}: {current_picks}")
+
+        if current_picks:
             # Take the best pick and put the rest as remaining picks
-            best_pick = mac_picks[0]
-            remaining_mac_picks = mac_picks[1:]
-            
-            logger.info(f"Best pick: {best_pick}, remaining: {remaining_mac_picks}")
-            
+            best_pick = current_picks[0]
+            total_weight_with_path = path_total_weight(best_pick, new_path)
+            remaining_picks = current_picks[1:]
+
+            logger.info(f"Best pick: {best_pick}, sum of weights with path: {total_weight_with_path}, remaining: {remaining_picks}")
+
             # If there are remaining picks, put them on stack for backtracking
-            if remaining_mac_picks:
-                stack.append((current_node, new_path[:-1], remaining_mac_picks))
-                logger.info(f"Added backtrack option: node={current_node}, remaining_picks={remaining_mac_picks}")
+            if remaining_picks:
+                stack.append((current_node, new_path[:-1], remaining_picks))
+                logger.info(f"Added backtrack option: node={current_node}, remaining_picks={remaining_picks}")
             
             # Explore the best pick
             stack.append((best_pick, new_path, []))
             logger.info(f"Exploring best pick: {best_pick} with path: {new_path}")
         else:
-            logger.info(f"No valid MAC picks for {current_node}, backtracking...")
+            logger.info(f"No valid picks for {current_node}, backtracking...")
             # This path is exhausted, will backtrack automatically
         
         logger.info(f"Stack state: {[(node, path, picks) for node, path, picks in stack]}")
@@ -285,34 +376,70 @@ remove_unavailable_nodes(my_graph)
 # i.e showing interest in the activity this graph represents
 sorted_seeds = sorted(my_graph.nodes.data("waiting_since"), key=lambda x: x[1])
 
+# Temporary function to generate a unique group ID
+def generate_unique_group_id():
+    # Collect all used groupIDs in the graph
+    used_ids = set()
+    for _, data in my_graph.nodes(data=True):
+        used_ids.update(data.get('groupIDs', []))
+    # Try random IDs under 10000 until a unique one is found
+    attempts = 0
+    while attempts < 1000:  # avoid infinite loop
+        candidate = random.randint(1, 9999)
+        if candidate not in used_ids:
+            return candidate
+        attempts += 1
+    raise RuntimeError("Could not generate a unique group ID under 10000.")
+
 groups_found = []
+group_ids_found = []
 for node in sorted_seeds:
     node_id = node[0]
     logger.info(f">>> Starting DFS from seed node: {node_id}")
-    
     result = dfs_iterative(node_id)
     if result:
-        logger.info(f"✅ Found group: {result}")
+        # Generate a unique group ID
+        new_group_id = generate_unique_group_id()
+        logger.info(f"✅ Group Created (ID {new_group_id})")
+        # Assign this group ID to each member's groupIDs
+        for member in result:
+            group_ids = my_graph.nodes[member].get('groupIDs', [])
+            if new_group_id not in group_ids:
+                group_ids.append(new_group_id)
+                my_graph.nodes[member]['groupIDs'] = group_ids
         groups_found.append(result)
-        
+        group_ids_found.append(new_group_id)
         # Remove only the seed node from available nodes for next iteration
         sorted_seeds = [s for s in sorted_seeds if s[0] != node_id]
-        
+        logger.info(f"Assigned group ID {new_group_id} to group: {result}")
         logger.info(f"Remaining seeds: {[s[0] for s in sorted_seeds]}")
     else:
         logger.info(f"❌ No group found starting from {node_id}")
-    
     # Optional: stop after finding first group or continue to find more
     # break  # Uncomment to stop after first group
 
+
 logger.info(f"🎯 Total groups found: {len(groups_found)}")
-for i, group in enumerate(groups_found, 1):
-    logger.info(f"Group {i}: {group}")
+for i, (group, gid) in enumerate(zip(groups_found, group_ids_found), 1):
+    logger.info(f"Group {i} (ID {gid}): {group}")
 
 # Detailed analysis of each group
 def analyze_group_details(group, group_number):
     logger.info(f"{'='*60}")
     logger.info(f"📊 DETAILED ANALYSIS FOR GROUP {group_number}: {group}")
+    # Calculate connectivity score: sum of all edge weights between group members
+    connectivity_score = 0
+    for i, node1 in enumerate(group):
+        for node2 in group[i+1:]:
+            if my_graph.has_edge(node1, node2):
+                # Sum both directions 
+                edge_data = my_graph.get_edge_data(node1, node2)
+                # Defensive: check for 'weight' dict and both nodes
+                if edge_data and 'weight' in edge_data:
+                    w1 = edge_data['weight'].get(node2, 0)
+                    w2 = edge_data['weight'].get(node1, 0)
+                    connectivity_score += w1 + w2
+    logger.info(f"🔗 Connectivity Score (sum of all edge weights in group): {connectivity_score}")
     logger.info(f"{'='*60}")
     
     for node in group:
